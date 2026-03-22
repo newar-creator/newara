@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NewAra">
+<title>NewAra</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto+Condensed:wght@500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --sky-top:#9ed4f0;--sky-mid:#bde4f5;--sky-bot:#e2f4fd;
+  --glass-bg:rgba(255,255,255,0.38);--glass-bg2:rgba(255,255,255,0.55);--glass-bdr:rgba(255,255,255,0.78);
+  --text-dark:#1a3a4a;--text-mid:#2e6080;--text-light:#5b9ab8;
+}
+
+html,body{height:100%;overscroll-behavior:none;}
+body{
+  font-family:'Nunito',sans-serif;
+  min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 15% 0%,rgba(160,220,255,0.75) 0%,transparent 55%),
+    radial-gradient(ellipse at 85% 5%,rgba(180,235,255,0.55) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 100%,rgba(100,195,240,0.45) 0%,transparent 60%),
+    linear-gradient(175deg,var(--sky-top) 0%,var(--sky-mid) 40%,var(--sky-bot) 100%);
+  background-attachment:fixed;
+  padding:20px 16px;
+  position:relative;overflow:hidden;
+}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
+body::before{width:360px;height:360px;top:-90px;right:-90px;background:radial-gradient(circle,rgba(160,225,255,0.6) 0%,transparent 70%);}
+body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-gradient(circle,rgba(130,205,250,0.5) 0%,transparent 70%);}
+
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,0.7),rgba(170,225,255,0.1));border:1px solid rgba(255,255,255,0.6);animation:floatUp linear infinite;}
+@keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:0;}10%{opacity:1;}90%{opacity:.5;}100%{transform:translateY(-110vh) scale(1.1);opacity:0;}}
+
+.container{
+  position:relative;z-index:10;
+  width:100%;max-width:420px;
+  display:flex;flex-direction:column;align-items:center;gap:0;
+  animation:cardIn .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:none;}}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:36px;}
+.hero-logo{
+  font-family:'Roboto Condensed',sans-serif;
+  font-weight:500;font-size:72px;
+  color:var(--text-dark);
+  letter-spacing:-1px;
+  text-shadow:0 4px 16px rgba(80,160,210,0.25),0 2px 0 rgba(255,255,255,0.9);
+  line-height:1;
+  margin-bottom:8px;
+}
+.hero-logo span{
+  background:linear-gradient(135deg,#8e7ff0,#5a4bc4);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{
+  font-size:14px;font-weight:600;
+  color:var(--text-light);
+  letter-spacing:.06em;
+  text-shadow:0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* CARDS */
+.cards{width:100%;display:flex;flex-direction:column;gap:14px;}
+
+.subject-card{
+  width:100%;
+  background:var(--glass-bg2);
+  border:1px solid var(--glass-bdr);
+  border-radius:24px;
+  padding:0;
+  backdrop-filter:blur(18px);
+  box-shadow:0 8px 32px rgba(60,150,210,0.18),0 1.5px 0 rgba(255,255,255,0.9) inset;
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:all .2s cubic-bezier(.34,1.56,.64,1);
+  text-decoration:none;
+  display:block;
+  -webkit-tap-highlight-color:transparent;
+}
+.subject-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:44%;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.42),rgba(255,255,255,0.06));
+  border-radius:24px 24px 60% 60%/24px 24px 30px 30px;
+  pointer-events:none;
+}
+.subject-card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(60,150,210,0.25),0 1.5px 0 rgba(255,255,255,0.9) inset;}
+.subject-card:active{transform:scale(.97);}
+
+.card-inner{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 20px;
+}
+.card-icon{
+  width:56px;height:56px;border-radius:18px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:28px;
+  border:1px solid rgba(255,255,255,0.6);
+  box-shadow:0 4px 14px rgba(0,0,0,0.15),0 1px 0 rgba(255,255,255,0.8) inset;
+  position:relative;overflow:hidden;
+}
+.card-icon::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent);
+  border-radius:18px 18px 0 0;
+}
+.icon-eng{background:linear-gradient(135deg,#8e7ff0,#5a4bc4);box-shadow:0 4px 14px rgba(106,90,224,0.4),0 1px 0 rgba(255,255,255,0.4) inset;}
+.icon-geo{background:linear-gradient(135deg,#3dcb96,#0a8f60);box-shadow:0 4px 14px rgba(10,143,96,0.4),0 1px 0 rgba(255,255,255,0.4) inset;}
+.icon-fec{background:linear-gradient(135deg,#e74c3c,#9b59b6);box-shadow:0 4px 14px rgba(155,89,182,0.4),0 1px 0 rgba(255,255,255,0.4) inset;}
+
+.card-text{flex:1;}
+.card-title{
+  font-size:20px;font-weight:800;
+  color:var(--text-dark);
+  text-shadow:0 1px 0 rgba(255,255,255,0.8);
+  margin-bottom:3px;
+}
+.card-sub{
+  font-size:12.5px;font-weight:600;
+  color:var(--text-light);
+  line-height:1.4;
+}
+.card-arrow{
+  font-size:22px;color:var(--text-light);
+  flex-shrink:0;
+  transition:transform .2s;
+}
+.subject-card:hover .card-arrow{transform:translateX(4px);}
+
+/* FOOTER */
+.footer{
+  margin-top:28px;
+  font-size:11.5px;font-weight:600;
+  color:var(--text-light);
+  text-align:center;
+  opacity:.7;
+}
+</style>
+</head>
+<body>
+
+<div class="bubbles" id="bubbles"></div>
+
+<div class="container">
+  <div class="hero">
+    <div class="hero-logo">New<span>Ara</span></div>
+    <div class="hero-sub">Hecho por Newen</div>
+  </div>
+
+  <div class="cards">
+    <a class="subject-card" href="https://newaraenglish.vercel.app/">
+      <div class="card-inner">
+        <div class="card-icon icon-eng">📚</div>
+        <div class="card-text">
+          <div class="card-title">NewAraEnglish</div>
+          <div class="card-sub">So/Either/Neither · Tag Questions · Irregular Verbs</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </a>
+
+    <a class="subject-card" href="https://newarageo.vercel.app/">
+      <div class="card-inner">
+        <div class="card-icon icon-geo">🌍</div>
+        <div class="card-text">
+          <div class="card-title">NewAraGeo</div>
+          <div class="card-sub">La Geografía · La Esfera · Ejercicios</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </a>
+
+    <a class="subject-card" href="https://newara-fec.vercel.app/">
+      <div class="card-inner">
+        <div class="card-icon icon-fec">⚖️</div>
+        <div class="card-text">
+          <div class="card-title">NewAraFEC</div>
+          <div class="card-sub">La Libertad · Las Normas · Tabla · Ejercicios</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">newara.vercel.app</div>
+</div>
+
+<script>
+(function(){
+  const w=document.getElementById('bubbles');
+  [20,28,15,34,22,13,30,18,25,11].forEach((s,i)=>{
+    const b=document.createElement('div');b.className='bubble';
+    b.style.cssText=`width:${s}px;height:${s}px;left:${6+i*9.5}%;bottom:-40px;animation-duration:${10+i*1.9}s;animation-delay:${i*1.4}s;`;
+    w.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>
