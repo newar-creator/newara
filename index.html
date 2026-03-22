@@ -989,12 +989,12 @@ body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-eve
 body::before{width:360px;height:360px;top:-90px;right:-90px;background:radial-gradient(circle,rgba(160,225,255,0.6) 0%,transparent 70%);}
 body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-gradient(circle,rgba(130,205,250,0.5) 0%,transparent 70%);}
 
-.subject-section{display:none;flex-direction:column;flex:1;overflow:hidden;}
-.subject-section.active{display:flex;}
+.subject-section{display:none!important;flex-direction:column;flex:1;overflow:hidden;}
+.subject-section.active{display:flex!important;}
 
 /* HOME PAGE */
-#page-home{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;overflow-y:auto;padding:32px 20px 60px;position:relative;z-index:10;animation:cardIn .35s cubic-bezier(.34,1.56,.64,1);}
-#page-home.active{display:flex;}
+#page-home{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;overflow-y:auto;padding:32px 20px 60px;position:relative;z-index:10;animation:cardIn .35s cubic-bezier(.34,1.56,.64,1);}#page-home.active{display:flex!important;}
+#page-home.active{display:flex!important;}
 .home-logo{font-family:'Roboto Condensed',sans-serif;font-weight:500;font-size:72px;color:#1a3a4a;letter-spacing:-1px;text-shadow:0 4px 16px rgba(80,160,210,0.25),0 2px 0 rgba(255,255,255,0.9);line-height:1;margin-bottom:8px;text-align:center;}
 .home-logo span{background:linear-gradient(135deg,#8e7ff0,#5a4bc4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .home-sub{font-size:14px;font-weight:600;color:#5b9ab8;letter-spacing:.06em;margin-bottom:40px;text-align:center;}
@@ -1050,6 +1050,10 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .menu-download::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);border-radius:13px 13px 0 0;}
 .menu-download:hover{transform:translateY(-1px);}
 .menu-download:active{transform:scale(.97);}
+
+/* MASTER BODY OVERRIDE */
+body{display:flex!important;flex-direction:column!important;height:100%!important;overflow:hidden!important;}
+.master-topbar{flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -1129,56 +1133,6 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 <!-- ENGLISH SECTION -->
 <div id="section-eng" class="subject-section">
 <!-- ══════════ MENU OVERLAY ══════════ -->
-<div class="menu-overlay" id="menuOverlay-eng" onclick="closeMenu(event)">
-  <div class="menu-panel">
-    <div class="menu-title">NewAraEnglish · Grammar</div>
-    <button class="menu-item mi-sen" onclick="masterSubjPage('eng','sen')">
-      <div class="menu-item-icon">◈</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">So · Either · Neither</span>
-        <span class="menu-item-sub">Fichas interactivas · 3 palabras</span>
-      </div>
-    </button>
-    <button class="menu-item mi-tq" onclick="masterSubjPage('eng','tq')">
-      <div class="menu-item-icon">?</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">Preguntas Coletilla</span>
-        <span class="menu-item-sub">Tag questions · Tipo A, B y entonación</span>
-      </div>
-    </button>
-    <button class="menu-item mi-ex" onclick="masterSubjPage('eng','ex')">
-      <div class="menu-item-icon">✏</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">Ejercicios</span>
-        <span class="menu-item-sub">Opción múltiple · completar · V/F</span>
-      </div>
-    </button>
-    <div class="menu-sep"></div>
-    <button class="menu-item mi-iv" onclick="masterSubjPage('eng','iv')">
-      <div class="menu-item-icon">V</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">Irregular Verbs</span>
-        <span class="menu-item-sub">100 verbos · fichas · tabla · ejercicios</span>
-      </div>
-    </button>
-    <div class="menu-sep"></div>
-
-    <div class="menu-sep"></div>
-    <a class="menu-goto menu-goto-home" href="https://newara.vercel.app/">
-      🏠 Página principal →
-    </a>
-    <button class="menu-goto menu-goto-geo" onclick="masterGo('geo')">
-      🌍 Ir a NewAraGeo →
-    </button>
-    <button class="menu-goto menu-goto-fec" onclick="masterGo('fec')">
-      ⚖️ Ir a NewAraFEC →
-    </button>
-    <button class="menu-download" onclick="downloadOffline('geo')">
-      ⬇️ Descargar NewAraGeo offline
-    </button>
-  </div>
-</div>
-
 <!-- ══════════ PAGE: SO / EITHER / NEITHER ══════════ -->
 <div class="page active" id="page-eng-sen">
   <div class="page-header">
@@ -1245,13 +1199,6 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 
 <!-- GEO SECTION -->
 <div id="section-geo" class="subject-section">
-<!-- MENU OVERLAY -->
-<div class="menu-overlay" id="menuOverlay-geo" onclick="closeMenu(event)">
-  <div class="menu-panel">
-    <div class="menu-hero">
-      <div class="menu-hero-logo">New<span>Ara</span></div>
-      <div class="menu-hero-sub">Hecho por Newen</div>
-    </div>
     <div class="menu-subjects">
       <a class="menu-subject ms-eng" href="https://newaraenglish.vercel.app/">📚 NewAraEnglish</a>
       <a class="menu-subject ms-geo" href="https://newarageo.vercel.app/">🌍 NewAraGeo</a>
@@ -1338,52 +1285,6 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 <!-- FEC SECTION -->
 <div id="section-fec" class="subject-section">
 <!-- MENU -->
-<div class="menu-overlay" id="menuOverlay-fec" onclick="closeMenu(event)">
-  <div class="menu-panel">
-    <div class="menu-hero">
-      <div class="menu-hero-logo">New<span>Ara</span></div>
-      <div class="menu-hero-sub">Hecho por Newen</div>
-    </div>
-    <div class="menu-subjects">
-      <a class="menu-subject ms-eng" href="https://newaraenglish.vercel.app/">📚 NewAraEnglish</a>
-      <a class="menu-subject ms-geo" href="https://newarageo.vercel.app/">🌍 NewAraGeo</a>
-      <a class="menu-subject ms-fec" href="https://newara-fec.vercel.app/">⚖️ NewAraFEC</a>
-    </div>
-    <div class="menu-sep"></div>
-    <div class="menu-title">Páginas</div>
-    <button class="menu-item mi-lib" onclick="masterSubjPage('fec','lib')">
-      <div class="menu-item-icon">⚖️</div>
-      <div><span class="menu-item-label">La Libertad</span><span class="menu-item-sub">Libertad individual, social y dignidad</span></div>
-    </button>
-    <button class="menu-item mi-nor" onclick="masterSubjPage('fec','nor')">
-      <div class="menu-item-icon">📋</div>
-      <div><span class="menu-item-label">Las Normas</span><span class="menu-item-sub">Sociales, morales y culturales</span></div>
-    </button>
-    <button class="menu-item mi-ref" onclick="masterSubjPage('fec','ref')">
-      <div class="menu-item-icon">📊</div>
-      <div><span class="menu-item-label">Tabla de referencia</span><span class="menu-item-sub">Comparación rápida de todos los temas</span></div>
-    </button>
-    <button class="menu-item mi-ex" onclick="masterSubjPage('fec','ex')">
-      <div class="menu-item-icon">✏️</div>
-      <div><span class="menu-item-label">Ejercicios</span><span class="menu-item-sub">Opción múltiple · completar · V/F</span></div>
-    </button>
-    <div class="menu-sep"></div>
-    <a class="menu-goto menu-goto-home" href="https://newara.vercel.app/">
-      🏠 Página principal →
-    </a>
-    <button class="menu-goto menu-goto-eng" onclick="masterGo('eng')">
-      📚 Ir a NewAraEnglish →
-    </button>
-    <button class="menu-goto menu-goto-geo" onclick="masterGo('geo')">
-      🌍 Ir a NewAraGeo →
-    </button>
-    <div class="menu-sep"></div>
-    <button class="menu-download" onclick="downloadOffline('fec')">
-      ⬇️ Descargar NewAraFEC offline
-    </button>
-  </div>
-</div>
-
 <!-- PAGE: LA LIBERTAD -->
 <div class="page active" id="page-fec-lib">
   <div class="page-header">
@@ -1579,31 +1480,14 @@ catch(e){} }
 let currentPage = 'sen';
 const pages = ['sen','tq','ex','iv'];
 
-function showPage_eng(p){
-  pages.forEach(id=>{
-    document.getElementById('page-eng-'+id).classList.toggle('active', id===p);
-  });
-  document.querySelectorAll('.page-btn').forEach((b,i)=>{
-    b.classList.toggle('active', pages[i]===p);
-  });
-  currentPage = p;
-  if(p==='ex' && !exStarted) { exStarted=true; exStartGame(); }
+function showPage_eng(p){ masterShowPage('eng', p); }
   if(p==='iv' && !ivInited)  { ivInited=true;  ivRenderFlash(); }
 }
 
 /* ── MENU ── */
-function toggleMenu_eng(){
-  const m=document.getElementById('menuOverlay-eng');
-  m.classList.toggle('open');
-}
-function closeMenu_eng(e){
-  if(e.target===document.getElementById('menuOverlay-eng'))
-    document.getElementById('menuOverlay-eng').classList.remove('open');
-}
-function menuGoTo_eng(p){
-  document.getElementById('menuOverlay-eng').classList.remove('open');
-  showPage(p);
-}
+function toggleMenu_eng(){ masterToggleMenu(); }
+function closeMenu_eng(e){ masterCloseMenu(e); }
+function menuGoTo_eng(p){ masterMenuGo('eng'); masterShowPage('eng', p); }
 
 /* ══════════════════════════════
    SO · EITHER · NEITHER
@@ -1675,7 +1559,7 @@ function senSetSense(i){
   });
   document.querySelectorAll('#sen-app .dot').forEach((d,j)=>{ d.style.background=j<=i?c.dot:''; d.classList.toggle('active',j===i); });
   senRenderCard();
-  document.querySelector('#page-sen .scroll-area').scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('#page-eng-sen .scroll-area').scrollTo({top:0,behavior:'smooth'});
 }
 function senRenderCard(){
   const word=senWords[senCw], s=senData[word].senses[senCs], c=senColors[word];
@@ -1733,7 +1617,7 @@ function tqSetSense(i){
   tqCt[tqSec]=i; const c=tqColors[tqSec];
   document.querySelectorAll('#tq-app .sense-tab').forEach((b,j)=>{ const a=j===i; b.classList.toggle('active',a); b.style.background=a?c.tab:''; b.style.color=a?'#fff':''; b.style.borderColor=a?'rgba(255,255,255,0.4)':''; b.style.boxShadow=a?'0 3px 14px rgba(0,0,0,0.18),0 1px 0 rgba(255,255,255,0.4) inset':''; });
   document.querySelectorAll('#tq-app .dot').forEach((d,j)=>{ d.style.background=j<=i?c.dot:''; d.classList.toggle('active-dot',j===i); });
-  tqRenderCard(); document.querySelector('#page-tq .scroll-area').scrollTo({top:0,behavior:'smooth'});
+  tqRenderCard(); document.querySelector('#page-eng-tq .scroll-area').scrollTo({top:0,behavior:'smooth'});
 }
 function tqRenderCard(){
   const sec=tqSections[tqSec], idx=tqCt[tqSec], s=sec.senses[idx], c=tqColors[tqSec], total=sec.senses.length;
@@ -1805,7 +1689,7 @@ function exShowFeedback(ok,exp){ const fb=document.getElementById('exFb'); fb.cl
 function exAnswerMC(idx){ if(exAnswered)return; const q=exQuestions[exCurrent]; const btns=document.querySelectorAll('#ex-app .opt-btn'); btns.forEach(b=>b.disabled=true); btns[q.answer].classList.add('correct'); if(idx!==q.answer){btns[idx].classList.add('wrong');}else{btns[idx].classList.add('pop');} btns.forEach((b,i)=>{if(i!==idx&&i!==q.answer)b.classList.add('reveal');}); exShowFeedback(idx===q.answer,q.explanation); }
 function exCheckFill(){ if(exAnswered)return; const input=document.getElementById('exFillInput'); const val=input.value.trim(); if(!val){input.classList.add('shake');setTimeout(()=>input.classList.remove('shake'),400);return;} const q=exQuestions[exCurrent]; const ok=val.toLowerCase().replace(/['.?!,]/g,'')===q.answer.toLowerCase().replace(/['.?!,]/g,''); input.disabled=true; document.getElementById('exCheckBtn').disabled=true; input.classList.add(ok?'correct':'wrong'); if(!ok)input.value=`${val}  →  ${q.answer}`; if(ok)input.classList.add('pop'); else input.classList.add('shake'); setTimeout(()=>input.classList.remove('shake','pop'),400); exShowFeedback(ok,q.explanation); }
 function exAnswerTF(ans){ if(exAnswered)return; const q=exQuestions[exCurrent]; const tBtn=document.getElementById('exTfT'),fBtn=document.getElementById('exTfF'); tBtn.disabled=fBtn.disabled=true; const ok=ans===q.answer; const chosen=ans?tBtn:fBtn, right=q.answer?tBtn:fBtn; right.classList.add('correct'); if(!ok){chosen.classList.add('wrong');chosen.classList.add('shake');}else chosen.classList.add('pop'); setTimeout(()=>chosen.classList.remove('shake','pop'),400); exShowFeedback(ok,q.explanation); }
-function exNextQ(){ exCurrent++; if(exCurrent>=exQuestions.length){exShowResults();return;} exRenderQ(); document.querySelector('#page-ex .scroll-area').scrollTo({top:0,behavior:'smooth'}); }
+function exNextQ(){ exCurrent++; if(exCurrent>=exQuestions.length){exShowResults();return;} exRenderQ(); document.querySelector('#page-eng-ex .scroll-area').scrollTo({top:0,behavior:'smooth'}); }
 function exShowResults(){
   const total=exQuestions.length,pct=Math.round((exScore/total)*100),stars=pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':'⭐',msg=pct>=90?'¡Excelente!':pct>=70?'¡Muy bien!':'¡Sigue practicando!';
   document.getElementById('ex-app').innerHTML=`<div class="card results"><div class="results-stars">${stars}</div><div class="results-score">${pct}%</div><div class="results-label">${msg}</div><div class="results-sub">${exScore} de ${total} respuestas correctas</div><div class="breakdown"><div class="pill pill-c">✓ ${exScore} correctas</div><div class="pill pill-w">✗ ${total-exScore} incorrectas</div></div><button class="retry-btn" onclick="exStartGame()">↺ Intentar de nuevo</button></div>`;
@@ -2099,7 +1983,7 @@ function exNextQ_geo(){
   exCurrent++;
   if(exCurrent>=exQuestions.length){exShowResults_geo();return;}
   exRenderQ_geo();
-  document.querySelector('#page-ex .scroll-area').scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('#page-geo-ex .scroll-area').scrollTo({top:0,behavior:'smooth'});
 }
 
 function exShowResults_geo(){
@@ -2800,13 +2684,13 @@ function setLibCard(i){
   libIdx=i;
   document.querySelectorAll('#lib-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
   renderLibCard();
-  document.querySelector('#page-lib .scroll-area').scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('#page-fec-lib .scroll-area').scrollTo({top:0,behavior:'smooth'});
 }
 function setNorCard(i){
   norIdx=i;
   document.querySelectorAll('#nor-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
   renderNorCard();
-  document.querySelector('#page-nor .scroll-area').scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('#page-fec-nor .scroll-area').scrollTo({top:0,behavior:'smooth'});
 }
 
 function renderLibCard(){
@@ -3000,7 +2884,7 @@ function exNextQ_fec(){
   exCur_fec++;
   if(exCur_fec>=exQs_fec.length){exShowResults_fec();return;}
   exRenderQ_fec();
-  document.querySelector('#page-ex .scroll-area').scrollTo({top:0,behavior:'smooth'});
+  document.querySelector('#page-fec-ex .scroll-area').scrollTo({top:0,behavior:'smooth'});
 }
 
 function exShowResults_fec(){
