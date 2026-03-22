@@ -605,7 +605,7 @@ function playWater(){ try{ SND_WATER.currentTime=0; SND_WATER.play(); }catch(e){
 let currentPage = 'sen';
 const pages = ['sen','tq','ex','iv'];
 
-function showPage(p){
+function showPage(p){ notifyParent(p);
   pages.forEach(id=>{
     document.getElementById('page-'+id).classList.toggle('active', id===p);
   });
@@ -987,6 +987,28 @@ document.addEventListener('click', function(e){
 /* INIT */
 senRender();
 tqRender();
+
+/* ══ IFRAME COMMUNICATION ══ */
+window.addEventListener('message', function(e) {
+  if(e.data && e.data.action === 'showPage') {
+    const p = e.data.page;
+    if(typeof showPage === 'function') showPage(p);
+  }
+});
+// Notify parent when page changes
+function notifyParent(page) {
+  try { window.parent.postMessage({ action: 'pageChanged', page: page }, '*'); } catch(e) {}
+}
+
+/* Hide own topbar if inside iframe */
+if(window.self !== window.top) {
+  document.addEventListener('DOMContentLoaded', function(){
+    const tb = document.querySelector('.topbar');
+    if(tb) { tb.style.display = 'none'; document.documentElement.style.setProperty('--topbar-h','0px'); }
+    const mo = document.querySelector('.menu-overlay');
+    if(mo) mo.style.display = 'none!important';
+  });
+}
 </script>
 </body>
 </html>
