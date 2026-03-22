@@ -300,6 +300,10 @@ body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-
 .mute-btn { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.8); background:rgba(255,255,255,0.5); box-shadow:0 2px 8px rgba(80,160,210,0.15),0 1px 0 rgba(255,255,255,0.9) inset; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; transition:all .15s; -webkit-tap-highlight-color:transparent; }
 .mute-btn:hover { background:rgba(255,255,255,0.7); transform:scale(1.1); }
 .mute-btn:active { transform:scale(0.9); }
+
+/* Hide topbar when inside iframe */
+body.in-iframe .topbar { display: none !important; }
+body.in-iframe { --topbar-h: 0px !important; }
 </style>
 </head>
 <body>
@@ -420,6 +424,24 @@ body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-
 </div>
 
 <script>
+
+/* Detect iframe and hide topbar */
+if (window.self !== window.top) {
+  document.documentElement.classList.add('in-iframe');
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('in-iframe');
+    const tb = document.querySelector('.topbar');
+    if (tb) tb.style.display = 'none';
+    document.documentElement.style.setProperty('--topbar-h', '0px');
+    // Also hide menu overlay
+    const mo = document.getElementById('menuOverlay');
+    if (mo) mo.style.display = 'none';
+    // Hide music btn if any
+    const mb = document.querySelector('.music-btn');
+    if (mb) mb.style.display = 'none';
+  });
+}
+
 
 
 
