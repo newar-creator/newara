@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/english", "destination": "/english.html" },
+    { "source": "/geo",     "destination": "/geo.html" },
+    { "source": "/fec",     "destination": "/fec.html" }
+  ]
+}
