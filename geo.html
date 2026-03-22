@@ -283,6 +283,11 @@ body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-
 .ms-fec{background:rgba(231,76,60,0.15);color:#8b1a10;border-color:rgba(231,76,60,0.4);}
 .menu-goto-home{background:linear-gradient(150deg,#5ba3e8,#2a72cc);box-shadow:0 4px 14px rgba(42,114,204,0.35),0 1px 0 rgba(255,255,255,0.35) inset;}
 
+
+/* Hide topbar when inside iframe */
+html.in-iframe .topbar { display: none !important; }
+html.in-iframe .master-topbar { display: none !important; }
+html.in-iframe body { --topbar-h: 0px; }
 </style>
 </head>
 <body>
@@ -381,6 +386,12 @@ body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-
 </div>
 
 <script>
+
+/* Detect iframe and hide topbar */
+if (window.self !== window.top) {
+  document.documentElement.classList.add('in-iframe');
+}
+
 /* BUBBLES */
 (function(){
   const w=document.getElementById('bubbles');
@@ -1120,11 +1131,7 @@ function notifyParent(page) {
   try { window.parent.postMessage({ action: 'pageChanged', page: page }, '*'); } catch(e) {}
 }
 
-/* Hide own topbar if inside iframe */
-if(window.self !== window.top) {
-  document.addEventListener('DOMContentLoaded', function(){
-    const tb = document.querySelector('.topbar');
-    if(tb) { tb.style.display = 'none'; document.documentElement.style.setProperty('--topbar-h','0px'); }
+
     const mo = document.querySelector('.menu-overlay');
     if(mo) mo.style.display = 'none!important';
   });
