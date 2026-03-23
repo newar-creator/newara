@@ -104,7 +104,15 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .home-card-arrow{font-size:22px;color:var(--text-light);flex-shrink:0;transition:transform .2s;}
 .home-card:hover .home-card-arrow{transform:translateX(4px);}
 
-/* IFRAME */
+/* PAGE BUTTONS (row 2) */
+.page-btn{padding:5px 12px;border-radius:50px;border:1px solid rgba(255,255,255,0.7);font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;position:relative;overflow:hidden;opacity:.42;background:rgba(255,255,255,0.45);color:var(--text-mid);box-shadow:0 2px 6px rgba(80,160,210,0.1),0 1px 0 rgba(255,255,255,0.8) inset;}
+.page-btn::before{content:'';position:absolute;top:0;left:0;right:0;height:52%;background:linear-gradient(to bottom,rgba(255,255,255,0.5),rgba(255,255,255,0.1));border-radius:50px 50px 0 0;pointer-events:none;}
+.page-btn.active{opacity:1;transform:translateY(-1px);color:#fff;border-color:rgba(255,255,255,0.4);}
+.page-btn:active{transform:scale(.95);}
+.pb-eng.active{background:linear-gradient(150deg,#8e7ff0,#5a4bc4);box-shadow:0 4px 14px rgba(106,90,224,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
+.pb-geo.active{background:linear-gradient(150deg,#3dcb96,#0a8f60);box-shadow:0 4px 14px rgba(10,143,96,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
+.pb-fec.active{background:linear-gradient(150deg,#e74c3c,#9b59b6);box-shadow:0 4px 14px rgba(155,89,182,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
+
 #iframe-wrap{flex:1;display:none;overflow:hidden;position:relative;z-index:10;}
 #iframe-wrap.active{display:block;}
 #subject-frame{width:100%;height:100%;border:none;display:block;}
@@ -126,6 +134,7 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
       <button class="subj-btn sb-fec" onclick="loadSubject('fec','fec.html')">⚖️ FEC</button>
     </div>
   </div>
+  <div class="topbar-row2 hidden" id="pageRow"></div>
 </div>
 
 <!-- MENU -->
@@ -202,6 +211,26 @@ document.addEventListener('click',function(e){
 
 let curSubj = null;
 
+const PAGES = {
+  eng: [
+    { id:'sen', label:'◈ So/Either' },
+    { id:'tq',  label:'? Tag Q' },
+    { id:'ex',  label:'✏️ Ejercicios' },
+    { id:'iv',  label:'V Irregular' },
+  ],
+  geo: [
+    { id:'geo', label:'🌍 Geografía' },
+    { id:'esf', label:'🌐 La Esfera' },
+    { id:'ex',  label:'✏️ Ejercicios' },
+  ],
+  fec: [
+    { id:'lib', label:'⚖️ Libertad' },
+    { id:'nor', label:'📋 Normas' },
+    { id:'ref', label:'📊 Tabla' },
+    { id:'ex',  label:'✏️ Ejercicios' },
+  ],
+};
+
 function loadSubject(subj, file) {
   closeMenuDirect();
   curSubj = subj;
@@ -220,7 +249,33 @@ function loadSubject(subj, file) {
   // Update subject buttons
   document.querySelectorAll('.subj-btn').forEach(b=>b.classList.remove('active'));
   document.querySelector('.sb-'+subj).classList.add('active');
+
+  // Show page buttons
+  const row = document.getElementById('pageRow');
+  row.classList.remove('hidden');
+  row.innerHTML = PAGES[subj].map((p,i) =>
+    `<button class="page-btn pb-${subj}${i===0?' active':''}" onclick="goToPage('${p.id}',this)">${p.label}</button>`
+  ).join('');
 }
+
+function goToPage(page, btn) {
+  document.querySelectorAll('#pageRow .page-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // Tell iframe to navigate
+  const frame = document.getElementById('subject-frame');
+  try { frame.contentWindow.postMessage({action:'showPage', page:page}, '*'); } catch(e){}
+}
+
+// Listen for page changes from iframe
+window.addEventListener('message', function(e) {
+  if(e.data && e.data.action==='pageChanged' && curSubj) {
+    const page = e.data.page;
+    const pages = PAGES[curSubj];
+    document.querySelectorAll('#pageRow .page-btn').forEach((b,i)=>{
+      b.classList.toggle('active', pages[i] && pages[i].id===page);
+    });
+  }
+});
 
 function goHome() {
   closeMenuDirect();
@@ -229,6 +284,8 @@ function goHome() {
   document.getElementById('iframe-wrap').classList.remove('active');
   document.getElementById('subject-frame').src = '';
   document.getElementById('subject-frame').dataset.loaded = '';
+  document.getElementById('pageRow').classList.add('hidden');
+  document.getElementById('pageRow').innerHTML = '';
   document.querySelectorAll('.subj-btn').forEach(b=>b.classList.remove('active'));
   document.querySelector('.sb-home').classList.add('active');
 }
