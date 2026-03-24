@@ -23,8 +23,8 @@
   --tabbar-h: 68px;
 }
 
-html,body{height:100%;overscroll-behavior:none;}
-body{
+html,{height:100%;overscroll-behavior:none;}
+{
   font-family:'Nunito',sans-serif;
   min-height:100dvh;display:flex;flex-direction:column;
   background:
@@ -37,9 +37,9 @@ body{
   padding-bottom:env(safe-area-inset-bottom);
   overflow:hidden;position:relative;
 }
-body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
-body::before{width:340px;height:340px;top:-80px;right:-80px;background:radial-gradient(circle,rgba(180,230,255,0.55) 0%,transparent 70%);}
-body::after{width:280px;height:280px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(150,210,255,0.45) 0%,transparent 70%);}
+::before,::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
+::before{width:340px;height:340px;top:-80px;right:-80px;background:radial-gradient(circle,rgba(180,230,255,0.55) 0%,transparent 70%);}
+::after{width:280px;height:280px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(150,210,255,0.45) 0%,transparent 70%);}
 
 /* ── BUBBLES ── */
 .bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
@@ -267,13 +267,13 @@ body::after{width:280px;height:280px;bottom:-60px;left:-60px;background:radial-g
 .schema-box{margin-bottom:1rem;padding:11px 14px;background:rgba(255,255,255,0.55);border-radius:14px;border:1px solid rgba(255,255,255,0.8);font-size:13px;color:var(--text-mid);line-height:1.75;font-weight:600;box-shadow:0 2px 8px rgba(100,160,210,0.12),0 1px 0 rgba(255,255,255,0.9) inset;position:relative;overflow:hidden;}
 .schema-box::before{content:'';position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);border-radius:14px 14px 0 0;pointer-events:none;}
 .schema-box strong{color:var(--text-dark);font-weight:800;}
-.body-text{font-size:13.5px;color:var(--text-mid);line-height:1.65;font-weight:600;margin-bottom:1rem;text-shadow:0 1px 0 rgba(255,255,255,0.5);}
+.-text{font-size:13.5px;color:var(--text-mid);line-height:1.65;font-weight:600;margin-bottom:1rem;text-shadow:0 1px 0 rgba(255,255,255,0.5);}
 
 .rule-list{display:flex;flex-direction:column;gap:9px;margin-bottom:1rem;}
 .rule-item{padding:11px 13px;background:rgba(255,255,255,0.42);border-radius:14px;border:1px solid rgba(255,255,255,0.75);box-shadow:0 2px 8px rgba(100,160,210,0.1),0 1px 0 rgba(255,255,255,0.8) inset;position:relative;overflow:hidden;}
 .rule-item::before{content:'';position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0.38),transparent);border-radius:14px 14px 0 0;pointer-events:none;}
 .rule-head{font-size:13px;font-weight:800;color:var(--text-dark);margin-bottom:4px;text-shadow:0 1px 0 rgba(255,255,255,0.7);}
-.rule-body{font-size:12.5px;color:var(--text-mid);line-height:1.6;font-weight:600;}
+.rule-{font-size:12.5px;color:var(--text-mid);line-height:1.6;font-weight:600;}
 .rule-ex{margin-top:6px;font-size:12px;color:var(--text-light);font-style:italic;font-weight:600;}
 
 /* EXERCISE SHARED */
@@ -442,24 +442,19 @@ body::after{width:280px;height:280px;bottom:-60px;left:-60px;background:radial-g
 /* Hide topbar inside iframe */
 </style>
 </head>
-<body>
+<>
 
 <div class="bubbles" id="bubbles"></div>
 
 <!-- ══════════ TOP BAR ══════════ -->
 <div class="topbar">
-  <div class="newara-logo" onclick="toggleMenu()">New<span>Ara</span>English</div>
-  <div class="topbar-divider"></div>
   <div class="topbar-pages">
     <button class="page-btn pb-sen active" onclick="showPage('sen')">So · Either · Neither</button>
     <button class="page-btn pb-tq"         onclick="showPage('tq')">Tag Questions</button>
     <button class="page-btn pb-ex"         onclick="showPage('ex')">Ejercicios</button>
     <button class="page-btn pb-iv"         onclick="showPage('iv')">Irregular Verbs</button>
-    <div class="menu-sep"></div>
-    <button class="menu-goto menu-goto-geo" onclick="window.open('https://newarageo.vercel.app/','_blank')">🌍 NewAraGeo →</button>
-    <button class="menu-goto menu-goto-fec" onclick="window.open('https://newara-fec.vercel.app/','_blank')">⚖️ NewAraFEC →</button>
-    <div class="menu-sep"></div>
-    <button class="menu-goto menu-goto-home" onclick="window.open('https://newara.vercel.app/','_blank')">🏠 Página principal →</button>
+  </div>
+</div>
   
 </div>
 </div>
@@ -761,20 +756,20 @@ const tqColors={
 };
 const tqSections=[
   { title:"Tipo A — distinto signo", subtitle:"La coletilla contradice a la oración principal", senses:[
-    { label:"¿qué es?", schema:`<strong>Oración afirmativa</strong> → coletilla <strong>negativa</strong><br><strong>Oración negativa</strong> → coletilla <strong>afirmativa</strong>`, body:"La coletilla es una mini-pregunta al final de la oración. Equivale a «¿verdad?», «¿no?», «¿no es así?» en español.", examples:[["She's your sister, isn't she?","Es tu hermana, ¿verdad?"],["You don't like coffee, do you?","No te gusta el café, ¿verdad?"],["He can swim, can't he?","Sabe nadar, ¿no?"]], note:"La coletilla siempre usa el mismo auxiliar que la oración principal." },
-    { label:"formación", body:"La coletilla se forma con el auxiliar de la oración principal y el pronombre sujeto correspondiente.", rules:[{head:"Con «be» o modal",body:"Se repite el mismo auxiliar en la coletilla.",ex:"She is tired, isn't she? / You can drive, can't you?"},{head:"Con «have» perfecto",body:"Se usa «have/has» en la coletilla.",ex:"They've finished, haven't they?"},{head:"Sin auxiliar (simple)",body:"Se usa «do/does/did» en la coletilla.",ex:"You like jazz, don't you? / She left early, didn't she?"}] },
-    { label:"casos especiales", body:"Algunos sujetos o verbos requieren atención especial.", rules:[{head:"I am → aren't I",body:"«I am» forma la coletilla con «aren't I».",ex:"I'm late, aren't I?"},{head:"nobody / nothing / never",body:"Estos sujetos son gramaticalmente negativos, así que la coletilla es afirmativa.",ex:"Nobody called, did they?"},{head:"Let's",body:"La coletilla de «let's» siempre es «shall we?».",ex:"Let's go for a walk, shall we?"}] },
-    { label:"entonación (tipo A)", body:"La entonación cambia el significado de la coletilla tipo A:", rules:[{head:"Entonación descendente ↘",body:"El hablante está seguro y solo hace un comentario o busca confirmación.",ex:"It's a nice day, isn't it? ↘"},{head:"Entonación ascendente ↗",body:"El hablante tiene duda genuina y espera respuesta.",ex:"You've been here before, haven't you? ↗"}] },
+    { label:"¿qué es?", schema:`<strong>Oración afirmativa</strong> → coletilla <strong>negativa</strong><br><strong>Oración negativa</strong> → coletilla <strong>afirmativa</strong>`, :"La coletilla es una mini-pregunta al final de la oración. Equivale a «¿verdad?», «¿no?», «¿no es así?» en español.", examples:[["She's your sister, isn't she?","Es tu hermana, ¿verdad?"],["You don't like coffee, do you?","No te gusta el café, ¿verdad?"],["He can swim, can't he?","Sabe nadar, ¿no?"]], note:"La coletilla siempre usa el mismo auxiliar que la oración principal." },
+    { label:"formación", :"La coletilla se forma con el auxiliar de la oración principal y el pronombre sujeto correspondiente.", rules:[{head:"Con «be» o modal",:"Se repite el mismo auxiliar en la coletilla.",ex:"She is tired, isn't she? / You can drive, can't you?"},{head:"Con «have» perfecto",:"Se usa «have/has» en la coletilla.",ex:"They've finished, haven't they?"},{head:"Sin auxiliar (simple)",:"Se usa «do/does/did» en la coletilla.",ex:"You like jazz, don't you? / She left early, didn't she?"}] },
+    { label:"casos especiales", :"Algunos sujetos o verbos requieren atención especial.", rules:[{head:"I am → aren't I",:"«I am» forma la coletilla con «aren't I».",ex:"I'm late, aren't I?"},{head:"no / nothing / never",:"Estos sujetos son gramaticalmente negativos, así que la coletilla es afirmativa.",ex:"No called, did they?"},{head:"Let's",:"La coletilla de «let's» siempre es «shall we?».",ex:"Let's go for a walk, shall we?"}] },
+    { label:"entonación (tipo A)", :"La entonación cambia el significado de la coletilla tipo A:", rules:[{head:"Entonación descendente ↘",:"El hablante está seguro y solo hace un comentario o busca confirmación.",ex:"It's a nice day, isn't it? ↘"},{head:"Entonación ascendente ↗",:"El hablante tiene duda genuina y espera respuesta.",ex:"You've been here before, haven't you? ↗"}] },
   ]},
   { title:"Tipo B — mismo signo", subtitle:"La coletilla repite la polaridad de la oración", senses:[
-    { label:"¿qué es?", schema:`<strong>Oración afirmativa</strong> → coletilla <strong>afirmativa</strong><br><strong>Oración negativa</strong> → coletilla <strong>negativa</strong>`, body:"Mucho menos frecuentes que las tipo A. La coletilla tiene el mismo signo que la oración que la precede.", examples:[["So she is waiting for me, is she?","Así que me está esperando, ¿eh?"],["So you didn't take the money, didn't you?","De modo que no cogiste el dinero, ¿verdad?"]], note:"Las oraciones suelen ir precedidas de «so», «ah» u «oh», indicando que reaccionamos a algo que acabamos de escuchar." },
-    { label:"para qué se usan", body:"El valor de estas coletillas es casi siempre recapitulativo o de reacción.", rules:[{head:"Recapitulación",body:"El hablante resume o repite lo que acaba de oír.",ex:"So you're leaving tomorrow, are you?"},{head:"Ironía o sospecha",body:"El hablante repite algo con tono de incredulidad.",ex:"So you didn't know about it, didn't you?"},{head:"Sorpresa",body:"El hablante reacciona con asombro ante una información inesperada.",ex:"Oh, so she got the job, did she?"}] },
-    { label:"entonación (tipo B)", body:"A diferencia del tipo A, la entonación del tipo B es siempre ascendente.", examples:[["So she passed the exam, did she? ↗","Así que aprobó el examen, ¿eh?"],["So he's not coming, isn't he? ↗","De modo que no viene, ¿ah?"]], note:"La entonación ascendente refleja que el hablante está procesando o reaccionando a la información." },
+    { label:"¿qué es?", schema:`<strong>Oración afirmativa</strong> → coletilla <strong>afirmativa</strong><br><strong>Oración negativa</strong> → coletilla <strong>negativa</strong>`, :"Mucho menos frecuentes que las tipo A. La coletilla tiene el mismo signo que la oración que la precede.", examples:[["So she is waiting for me, is she?","Así que me está esperando, ¿eh?"],["So you didn't take the money, didn't you?","De modo que no cogiste el dinero, ¿verdad?"]], note:"Las oraciones suelen ir precedidas de «so», «ah» u «oh», indicando que reaccionamos a algo que acabamos de escuchar." },
+    { label:"para qué se usan", :"El valor de estas coletillas es casi siempre recapitulativo o de reacción.", rules:[{head:"Recapitulación",:"El hablante resume o repite lo que acaba de oír.",ex:"So you're leaving tomorrow, are you?"},{head:"Ironía o sospecha",:"El hablante repite algo con tono de incredulidad.",ex:"So you didn't know about it, didn't you?"},{head:"Sorpresa",:"El hablante reacciona con asombro ante una información inesperada.",ex:"Oh, so she got the job, did she?"}] },
+    { label:"entonación (tipo B)", :"A diferencia del tipo A, la entonación del tipo B es siempre ascendente.", examples:[["So she passed the exam, did she? ↗","Así que aprobó el examen, ¿eh?"],["So he's not coming, isn't he? ↗","De modo que no viene, ¿ah?"]], note:"La entonación ascendente refleja que el hablante está procesando o reaccionando a la información." },
   ]},
   { title:"Entonación", subtitle:"Resumen comparativo de ambos tipos", senses:[
-    { label:"descendente ↘", body:"El hablante está seguro y solo busca acuerdo. No espera una respuesta.", examples:[["It's a lovely day, isn't it? ↘","Es un día precioso, ¿verdad?"],["You live nearby, don't you? ↘","Vives cerca, ¿no?"],["She's been there before, hasn't she? ↘","Ya ha estado allí, ¿no?"]], note:"Siempre descendente en el Tipo A cuando hay certeza." },
-    { label:"ascendente ↗", body:"El hablante tiene duda real o reacciona a algo que acaba de escuchar (Tipo B).", examples:[["You've met her, haven't you? ↗","La conoces, ¿verdad? (duda genuina)"],["So he quit his job, did he? ↗","Así que renunció, ¿eh? (tipo B, reacción)"],["This is the right way, isn't it? ↗","Es por aquí, ¿no? (buscando confirmación)"]], note:"Siempre ascendente en el Tipo B." },
-    { label:"tabla resumen", body:"Comparación rápida entre los dos tipos de coletilla:", rules:[{head:"Tipo A + entonación ↘",body:"Certeza · comentario · busca acuerdo. No espera respuesta real.",ex:"She's French, isn't she? ↘"},{head:"Tipo A + entonación ↗",body:"Duda genuina · espera una respuesta real.",ex:"He was there, wasn't he? ↗"},{head:"Tipo B + entonación ↗",body:"Reacción · recapitulación · ironía o sorpresa. Siempre ascendente.",ex:"So you knew all along, did you? ↗"}] },
+    { label:"descendente ↘", :"El hablante está seguro y solo busca acuerdo. No espera una respuesta.", examples:[["It's a lovely day, isn't it? ↘","Es un día precioso, ¿verdad?"],["You live nearby, don't you? ↘","Vives cerca, ¿no?"],["She's been there before, hasn't she? ↘","Ya ha estado allí, ¿no?"]], note:"Siempre descendente en el Tipo A cuando hay certeza." },
+    { label:"ascendente ↗", :"El hablante tiene duda real o reacciona a algo que acaba de escuchar (Tipo B).", examples:[["You've met her, haven't you? ↗","La conoces, ¿verdad? (duda genuina)"],["So he quit his job, did he? ↗","Así que renunció, ¿eh? (tipo B, reacción)"],["This is the right way, isn't it? ↗","Es por aquí, ¿no? (buscando confirmación)"]], note:"Siempre ascendente en el Tipo B." },
+    { label:"tabla resumen", :"Comparación rápida entre los dos tipos de coletilla:", rules:[{head:"Tipo A + entonación ↘",:"Certeza · comentario · busca acuerdo. No espera respuesta real.",ex:"She's French, isn't she? ↘"},{head:"Tipo A + entonación ↗",:"Duda genuina · espera una respuesta real.",ex:"He was there, wasn't he? ↗"},{head:"Tipo B + entonación ↗",:"Reacción · recapitulación · ironía o sorpresa. Siempre ascendente.",ex:"So you knew all along, did you? ↗"}] },
   ]},
 ];
 let tqCt=[0,0,0], tqSec=0;
@@ -788,11 +783,11 @@ function tqSetSense(i){
 function tqRenderCard(){
   const sec=tqSections[tqSec], idx=tqCt[tqSec], s=sec.senses[idx], c=tqColors[tqSec], total=sec.senses.length;
   const schemaHtml=s.schema?`<div class="schema-box">${s.schema}</div>`:'';
-  const bodyHtml=s.body?`<p class="body-text" style="margin-bottom:${(s.examples||s.rules)?'1rem':'0'}">${s.body}</p>`:'';
+  const Html=s.?`<p class="-text" style="margin-bottom:${(s.examples||s.rules)?'1rem':'0'}">${s.}</p>`:'';
   const exHtml=s.examples?`<div class="examples">${s.examples.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>`:'';
-  const rulesHtml=s.rules?`<div class="rule-list">${s.rules.map(r=>`<div class="rule-item"><div class="rule-head">${r.head}</div><div class="rule-body">${r.body}</div>${r.ex?`<div class="rule-ex">${r.ex}</div>`:''}</div>`).join('')}</div>`:'';
+  const rulesHtml=s.rules?`<div class="rule-list">${s.rules.map(r=>`<div class="rule-item"><div class="rule-head">${r.head}</div><div class="rule-">${r.}</div>${r.ex?`<div class="rule-ex">${r.ex}</div>`:''}</div>`).join('')}</div>`:'';
   const noteHtml=s.note?`<div class="note-box" style="border-left-color:${c.note}">${s.note}</div>`:'';
-  document.getElementById('tq-card').innerHTML=`<div class="meaning-label">ficha ${idx+1} de ${total}</div><div class="meaning-text">${s.label.charAt(0).toUpperCase()+s.label.slice(1)}</div>${schemaHtml}${bodyHtml}${rulesHtml}${exHtml}${noteHtml}`;
+  document.getElementById('tq-card').innerHTML=`<div class="meaning-label">ficha ${idx+1} de ${total}</div><div class="meaning-text">${s.label.charAt(0).toUpperCase()+s.label.slice(1)}</div>${schemaHtml}${Html}${rulesHtml}${exHtml}${noteHtml}`;
 }
 function tqRender(){
   const sec=tqSections[tqSec], senses=sec.senses, idx=tqCt[tqSec], c=tqColors[tqSec];
@@ -820,7 +815,7 @@ const EX_BANK=[
   {type:'mc',topic:'So/Either/Neither',text:'"I can\'t drive." "___ can I." (yo tampoco)',options:["So","Either","Neither","Both"],answer:2,explanation:'"Neither + auxiliar + sujeto" expresa acuerdo con oración negativa.'},
   {type:'mc',topic:'Tag Q',text:'Let\'s go for a walk, ___?',options:["don't we","won't we","shall we","will we"],answer:2,explanation:'Con "let\'s", la coletilla es siempre "shall we?".'},
   {type:'mc',topic:'So/Either/Neither',text:'"I don\'t like it." "I don\'t like it ___, " (tampoco, sin inversión)',options:["so","neither","either","too"],answer:2,explanation:'"Either" al final de la oración negativa equivale a "tampoco".'},
-  {type:'mc',topic:'Tag Q',text:'Nobody called last night, ___?',options:["didn't they","did they","weren't they","weren't nobody"],answer:1,explanation:'"Nobody" es negativo, entonces la coletilla es afirmativa: "did they".'},
+  {type:'mc',topic:'Tag Q',text:'No called last night, ___?',options:["didn't they","did they","weren't they","weren't no"],answer:1,explanation:'"No" es negativo, entonces la coletilla es afirmativa: "did they".'},
   {type:'mc',topic:'So/Either/Neither',text:'Elige la correcta: "You can choose ___ of the two options."',options:["any","none","either","neither"],answer:2,explanation:'"Either" se usa para "cualquiera de dos". "Any" implica más de dos.'},
   {type:'mc',topic:'Tag Q',text:'I\'m late again, ___?',options:["am I","isn't I","aren't I","don't I"],answer:2,explanation:'"I am" forma la coletilla con "aren\'t I" — caso especial del inglés.'},
   {type:'fill',topic:'Tag Q',text:'You can swim, ___ you?',answer:"can't",hint:"Auxiliar modal negativo",explanation:'Con "can" afirmativo, la coletilla es "can\'t you".'},
@@ -840,15 +835,15 @@ function exRenderQ(){
   exAnswered=false;
   const app=document.getElementById('ex-app');
   const total=exQuestions.length, pct=Math.round((exCurrent/total)*100), q=exQuestions[exCurrent];
-  let badgeHtml='',bodyHtml='';
-  if(q.type==='mc'){badgeHtml=`<div class="type-badge badge-mc"><span class="badge-dot"></span>Opción múltiple · ${q.topic}</div>`;bodyHtml=`<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" id="exopt${i}" onclick="exAnswerMC(${i})">${o}</button>`).join('')}</div>`;}
-  else if(q.type==='fill'){badgeHtml=`<div class="type-badge badge-fill"><span class="badge-dot"></span>Completar · ${q.topic}</div>`;bodyHtml=`<div class="fill-row"><input class="fill-input" id="exFillInput" type="text" placeholder="Tu respuesta…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')exCheckFill()"><button class="check-btn" id="exCheckBtn" onclick="exCheckFill()">✓</button></div><p style="font-size:11.5px;color:var(--text-light);margin-top:6px;font-weight:600;">💡 ${q.hint}</p>`;}
-  else if(q.type==='tf'){badgeHtml=`<div class="type-badge badge-tf"><span class="badge-dot"></span>V/F · ${q.topic}</div>`;bodyHtml=`<div class="tf-row"><button class="tf-btn tf-true" id="exTfT" onclick="exAnswerTF(true)">✓ Verdadero</button><button class="tf-btn tf-false" id="exTfF" onclick="exAnswerTF(false)">✗ Falso</button></div>`;}
+  let badgeHtml='',Html='';
+  if(q.type==='mc'){badgeHtml=`<div class="type-badge badge-mc"><span class="badge-dot"></span>Opción múltiple · ${q.topic}</div>`;Html=`<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" id="exopt${i}" onclick="exAnswerMC(${i})">${o}</button>`).join('')}</div>`;}
+  else if(q.type==='fill'){badgeHtml=`<div class="type-badge badge-fill"><span class="badge-dot"></span>Completar · ${q.topic}</div>`;Html=`<div class="fill-row"><input class="fill-input" id="exFillInput" type="text" placeholder="Tu respuesta…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')exCheckFill()"><button class="check-btn" id="exCheckBtn" onclick="exCheckFill()">✓</button></div><p style="font-size:11.5px;color:var(--text-light);margin-top:6px;font-weight:600;">💡 ${q.hint}</p>`;}
+  else if(q.type==='tf'){badgeHtml=`<div class="type-badge badge-tf"><span class="badge-dot"></span>V/F · ${q.topic}</div>`;Html=`<div class="tf-row"><button class="tf-btn tf-true" id="exTfT" onclick="exAnswerTF(true)">✓ Verdadero</button><button class="tf-btn tf-false" id="exTfF" onclick="exAnswerTF(false)">✗ Falso</button></div>`;}
   app.innerHTML=`
     <div class="ex-progress-row"><span class="ex-prog-label">Pregunta ${Math.min(exCurrent+1,total)} de ${total}</span><span class="ex-prog-score">✓ ${exScore}</span></div>
     <div class="ex-track"><div class="ex-fill" id="exBar" style="width:${pct}%"></div></div>
     ${badgeHtml}
-    <div class="card"><div class="q-num">Pregunta ${exCurrent+1} de ${total}</div><div class="q-text">${q.text}</div>${bodyHtml}<div class="feedback" id="exFb"></div><button class="next-btn" id="exNext" onclick="exNextQ()">${exCurrent===total-1?'Ver resultados →':'Siguiente →'}</button></div>`;
+    <div class="card"><div class="q-num">Pregunta ${exCurrent+1} de ${total}</div><div class="q-text">${q.text}</div>${Html}<div class="feedback" id="exFb"></div><button class="next-btn" id="exNext" onclick="exNextQ()">${exCurrent===total-1?'Ver resultados →':'Siguiente →'}</button></div>`;
   if(q.type==='fill') document.getElementById('exFillInput').focus();
 }
 function exShowFeedback(ok,exp){ const fb=document.getElementById('exFb'); fb.className=`feedback show ${ok?'correct':'wrong'}`; fb.innerHTML=(ok?'✓ ¡Correcto! ':'✗ Incorrecto. ')+exp; document.getElementById('exNext').classList.add('show'); if(ok){exScore++;playGana();}else{playPerder();} exAnswered=true; }
@@ -961,7 +956,7 @@ function ivRenderTable(filter=''){
     <div class="card" style="margin-bottom:12px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:8px;">📋 Referencia completa · ${VERBS.length} verbos irregulares</div>
     <div style="font-size:13px;font-weight:600;color:var(--text-mid);line-height:1.65;"><strong style="color:var(--text-dark);">A-A</strong> — igual en las 3 formas (cut/cut/cut) &nbsp;·&nbsp; <strong style="color:var(--text-dark);">B-B</strong> — past = participle (bring/brought/brought) &nbsp;·&nbsp; <strong style="color:var(--text-dark);">A-B</strong> — las 3 formas distintas (go/went/gone)</div></div>
     <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" id="ivSearch" type="text" placeholder="Buscar verbo…" value="${filter}" oninput="ivRenderTable(this.value)" autocomplete="off" spellcheck="false"><button class="search-clear" onclick="ivClearSearch()" style="${filter?'display:block':''}">✕</button></div>
-    <table class="verb-table"><thead><tr><th>Base form</th><th>Past simple</th><th>Past participle</th><th>Traducción</th></tr></thead><tbody>${trs}</tbody></table>`;
+    <table class="verb-table"><thead><tr><th>Base form</th><th>Past simple</th><th>Past participle</th><th>Traducción</th></tr></thead><t>${trs}</t></table>`;
 }
 function ivClearSearch(){ivRenderTable('');document.getElementById('ivSearch').focus();}
 
@@ -977,14 +972,14 @@ function ivBuildEx(){
 function ivStartEx(){ivExQs=ivBuildEx();ivExCur=0;ivExScore=0;ivExAnswered=false;ivRenderEx();}
 function ivRenderEx(){
   ivExAnswered=false;const app=document.getElementById('iv-app');const total=ivExQs.length,pct=Math.round((ivExCur/total)*100),q=ivExQs[ivExCur];
-  let badgeHtml='',bodyHtml='';
-  if(q.type==='mc'){badgeHtml=`<div class="type-badge badge-mc"><span class="badge-dot"></span>Opción múltiple · ${q.sub==='past'?'Past Simple':'Past Participle'}</div>`;bodyHtml=`<div class="options">${q.opts.map((o,i)=>`<button class="opt-btn" id="ivopt${i}" onclick="ivAnswerMC(${i})">${o}</button>`).join('')}</div>`;}
-  else if(q.type==='fill'){badgeHtml=`<div class="type-badge badge-fill"><span class="badge-dot"></span>Completar · ${q.sub==='past'?'Past Simple':'Base form'}</div>`;bodyHtml=`<div class="fill-row"><input class="fill-input" id="ivFillInput" type="text" placeholder="Tu respuesta…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')ivCheckFill()"><button class="check-btn" id="ivCheckBtn" onclick="ivCheckFill()">✓</button></div>`;}
-  else if(q.type==='three'){badgeHtml=`<div class="type-badge badge-3"><span class="badge-dot"></span>Las 3 formas</div>`;bodyHtml=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:4px;"><div class="three-label">Base form</div><div class="three-label">Past Simple</div><div class="three-label">Past Participle</div></div><div class="three-grid"><input class="three-input" id="ivT0" type="text" value="${q.verb.b}" disabled style="opacity:.7;cursor:default;"><input class="three-input" id="ivT1" type="text" placeholder="Past simple…" autocomplete="off" autocorrect="off" spellcheck="false"><input class="three-input" id="ivT2" type="text" placeholder="Past participle…" autocomplete="off" autocorrect="off" spellcheck="false"></div><button class="three-check" id="ivCheckBtn" onclick="ivCheckThree()">✓ Verificar las 3 formas</button>`;}
+  let badgeHtml='',Html='';
+  if(q.type==='mc'){badgeHtml=`<div class="type-badge badge-mc"><span class="badge-dot"></span>Opción múltiple · ${q.sub==='past'?'Past Simple':'Past Participle'}</div>`;Html=`<div class="options">${q.opts.map((o,i)=>`<button class="opt-btn" id="ivopt${i}" onclick="ivAnswerMC(${i})">${o}</button>`).join('')}</div>`;}
+  else if(q.type==='fill'){badgeHtml=`<div class="type-badge badge-fill"><span class="badge-dot"></span>Completar · ${q.sub==='past'?'Past Simple':'Base form'}</div>`;Html=`<div class="fill-row"><input class="fill-input" id="ivFillInput" type="text" placeholder="Tu respuesta…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')ivCheckFill()"><button class="check-btn" id="ivCheckBtn" onclick="ivCheckFill()">✓</button></div>`;}
+  else if(q.type==='three'){badgeHtml=`<div class="type-badge badge-3"><span class="badge-dot"></span>Las 3 formas</div>`;Html=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:4px;"><div class="three-label">Base form</div><div class="three-label">Past Simple</div><div class="three-label">Past Participle</div></div><div class="three-grid"><input class="three-input" id="ivT0" type="text" value="${q.verb.b}" disabled style="opacity:.7;cursor:default;"><input class="three-input" id="ivT1" type="text" placeholder="Past simple…" autocomplete="off" autocorrect="off" spellcheck="false"><input class="three-input" id="ivT2" type="text" placeholder="Past participle…" autocomplete="off" autocorrect="off" spellcheck="false"></div><button class="three-check" id="ivCheckBtn" onclick="ivCheckThree()">✓ Verificar las 3 formas</button>`;}
   app.innerHTML=`
     <div class="ex-progress-row"><span class="ex-prog-label">Pregunta ${Math.min(ivExCur+1,total)} de ${total}</span><span class="ex-prog-score">✓ ${ivExScore}</span></div>
     <div class="ex-track"><div class="ex-fill" style="width:${pct}%"></div></div>
-    ${badgeHtml}<div class="card"><div class="q-num">Pregunta ${ivExCur+1} de ${total}</div><div class="q-text">${q.q}</div>${bodyHtml}<div class="feedback" id="ivFb"></div><button class="next-btn" id="ivNext" onclick="ivNextEx()">${ivExCur===total-1?'Ver resultados →':'Siguiente →'}</button></div>`;
+    ${badgeHtml}<div class="card"><div class="q-num">Pregunta ${ivExCur+1} de ${total}</div><div class="q-text">${q.q}</div>${Html}<div class="feedback" id="ivFb"></div><button class="next-btn" id="ivNext" onclick="ivNextEx()">${ivExCur===total-1?'Ver resultados →':'Siguiente →'}</button></div>`;
   if(q.type==='fill')document.getElementById('ivFillInput').focus();
   if(q.type==='three')document.getElementById('ivT1').focus();
 }
@@ -1012,5 +1007,5 @@ document.addEventListener('click', function(e){
 senRender();
 tqRender();
 </script>
-</body>
+</>
 </html>
