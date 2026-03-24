@@ -290,12 +290,20 @@ body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-
 
 <!-- TOPBAR -->
 <div class="topbar">
+  <div class="newara-logo" onclick="toggleMenu()">New<span>Ara</span>FEC</div>
+  <div class="topbar-divider"></div>
   <div class="topbar-pages">
     <button class="page-btn pb-lib active" onclick="showPage('lib')">⚖️ La Libertad</button>
     <button class="page-btn pb-nor"        onclick="showPage('nor')">📋 Las Normas</button>
     <button class="page-btn pb-ref"        onclick="showPage('ref')">📊 Tabla</button>
     <button class="page-btn pb-ex"         onclick="showPage('ex')">✏️ Ejercicios</button>
-  </div>
+    <div class="menu-sep"></div>
+    <button class="menu-goto menu-goto-eng" onclick="window.open('https://newaraenglish.vercel.app/','_blank')">📚 NewAraEnglish →</button>
+    <button class="menu-goto menu-goto-geo" onclick="window.open('https://newarageo.vercel.app/','_blank')">🌍 NewAraGeo →</button>
+    <div class="menu-sep"></div>
+    <button class="menu-goto menu-goto-home" onclick="window.open('https://newara.vercel.app/','_blank')">🏠 Página principal →</button>
+  
+</div>
 </div>
 
 <!-- MENU -->

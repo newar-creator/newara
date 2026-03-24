@@ -31,10 +31,12 @@ body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-eve
 body::before{width:360px;height:360px;top:-90px;right:-90px;background:radial-gradient(circle,rgba(160,225,255,0.6) 0%,transparent 70%);}
 body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-gradient(circle,rgba(130,205,250,0.5) 0%,transparent 70%);}
 
+/* BUBBLES */
 .bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,0.7),rgba(170,225,255,0.1));border:1px solid rgba(255,255,255,0.6);animation:floatUp linear infinite;}
 @keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:0;}10%{opacity:1;}90%{opacity:.5;}100%{transform:translateY(-110vh) scale(1.1);opacity:0;}}
 
+/* TOPBAR */
 .topbar{position:relative;z-index:100;flex-shrink:0;background:rgba(255,255,255,0.35);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.75);box-shadow:0 2px 16px rgba(80,170,220,0.15),0 1px 0 rgba(255,255,255,0.9) inset;}
 .topbar::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.45),transparent);pointer-events:none;}
 .topbar-row1{height:54px;display:flex;align-items:center;padding:0 14px;gap:10px;position:relative;z-index:1;}
@@ -42,12 +44,14 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .topbar-row2::-webkit-scrollbar{display:none;}
 .topbar-row2.hidden{display:none;}
 
+/* LOGO */
 .newara-logo{font-family:'Roboto Condensed',sans-serif;font-weight:500;font-size:21px;flex-shrink:0;color:var(--text-dark);letter-spacing:0.5px;cursor:pointer;padding:4px 8px;border-radius:10px;transition:all .15s;-webkit-tap-highlight-color:transparent;user-select:none;border:none;background:none;}
 .newara-logo:hover{background:rgba(255,255,255,0.4);}
 .newara-logo:active{transform:scale(.95);}
 .newara-logo span{background:linear-gradient(135deg,#8e7ff0,#5a4bc4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .topbar-divider{width:1px;height:26px;background:rgba(255,255,255,0.6);border-left:1px solid rgba(80,160,200,0.2);flex-shrink:0;}
 
+/* SUBJECT BUTTONS */
 .subj-btn{padding:6px 13px;border-radius:50px;border:1px solid rgba(255,255,255,0.7);font-size:12.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;position:relative;overflow:hidden;opacity:.42;background:rgba(255,255,255,0.45);color:var(--text-mid);box-shadow:0 2px 6px rgba(80,160,210,0.1),0 1px 0 rgba(255,255,255,0.8) inset;}
 .subj-btn::before{content:'';position:absolute;top:0;left:0;right:0;height:52%;background:linear-gradient(to bottom,rgba(255,255,255,0.5),rgba(255,255,255,0.1));border-radius:50px 50px 0 0;pointer-events:none;}
 .subj-btn.active{opacity:1;transform:translateY(-1px);color:#fff;border-color:rgba(255,255,255,0.4);}
@@ -56,8 +60,8 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .sb-eng.active{background:linear-gradient(150deg,#8e7ff0,#5a4bc4);box-shadow:0 4px 14px rgba(106,90,224,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
 .sb-geo.active{background:linear-gradient(150deg,#3dcb96,#0a8f60);box-shadow:0 4px 14px rgba(10,143,96,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
 .sb-fec.active{background:linear-gradient(150deg,#e74c3c,#9b59b6);box-shadow:0 4px 14px rgba(155,89,182,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
-.sb-hist.active{background:linear-gradient(150deg,#e67e22,#c0392b);box-shadow:0 4px 14px rgba(192,57,43,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
 
+/* MENU */
 .menu-overlay{position:fixed;inset:0;z-index:200;display:none;align-items:flex-start;justify-content:flex-start;padding-top:62px;padding-left:14px;background:rgba(160,210,240,0.18);backdrop-filter:blur(6px);animation:menuFadeIn .18s ease;}
 .menu-overlay.open{display:flex;}
 @keyframes menuFadeIn{from{opacity:0;}to{opacity:1;}}
@@ -76,9 +80,9 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .msb-eng{background:rgba(142,127,240,0.15);color:#3a2ea0;border-color:rgba(142,127,240,0.4);}
 .msb-geo{background:rgba(61,203,150,0.15);color:#0a5e40;border-color:rgba(61,203,150,0.4);}
 .msb-fec{background:rgba(231,76,60,0.15);color:#8b1a10;border-color:rgba(231,76,60,0.4);}
-.msb-hist{background:rgba(230,126,34,0.15);color:#c0392b;border-color:rgba(230,126,34,0.4);}
 .msb-home{background:rgba(91,163,232,0.15);color:#1a5c99;border-color:rgba(91,163,232,0.4);}
 
+/* HOME PAGE */
 #home-page{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px 60px;overflow-y:auto;position:relative;z-index:10;}
 #home-page.hidden{display:none;}
 .home-logo{font-family:'Roboto Condensed',sans-serif;font-weight:500;font-size:68px;color:var(--text-dark);letter-spacing:-1px;text-shadow:0 4px 16px rgba(80,160,210,0.25),0 2px 0 rgba(255,255,255,0.9);line-height:1;margin-bottom:8px;text-align:center;}
@@ -95,12 +99,12 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .hci-eng{background:linear-gradient(135deg,#8e7ff0,#5a4bc4);}
 .hci-geo{background:linear-gradient(135deg,#3dcb96,#0a8f60);}
 .hci-fec{background:linear-gradient(135deg,#e74c3c,#9b59b6);}
-.hci-hist{background:linear-gradient(135deg,#e67e22,#c0392b);}
 .home-card-title{font-size:19px;font-weight:800;color:var(--text-dark);text-shadow:0 1px 0 rgba(255,255,255,0.8);margin-bottom:3px;}
 .home-card-sub{font-size:12px;font-weight:600;color:var(--text-light);line-height:1.4;}
 .home-card-arrow{font-size:22px;color:var(--text-light);flex-shrink:0;transition:transform .2s;}
 .home-card:hover .home-card-arrow{transform:translateX(4px);}
 
+/* PAGE BUTTONS (row 2) */
 .page-btn{padding:5px 12px;border-radius:50px;border:1px solid rgba(255,255,255,0.7);font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;position:relative;overflow:hidden;opacity:.42;background:rgba(255,255,255,0.45);color:var(--text-mid);box-shadow:0 2px 6px rgba(80,160,210,0.1),0 1px 0 rgba(255,255,255,0.8) inset;}
 .page-btn::before{content:'';position:absolute;top:0;left:0;right:0;height:52%;background:linear-gradient(to bottom,rgba(255,255,255,0.5),rgba(255,255,255,0.1));border-radius:50px 50px 0 0;pointer-events:none;}
 .page-btn.active{opacity:1;transform:translateY(-1px);color:#fff;border-color:rgba(255,255,255,0.4);}
@@ -108,7 +112,6 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 .pb-eng.active{background:linear-gradient(150deg,#8e7ff0,#5a4bc4);box-shadow:0 4px 14px rgba(106,90,224,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
 .pb-geo.active{background:linear-gradient(150deg,#3dcb96,#0a8f60);box-shadow:0 4px 14px rgba(10,143,96,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
 .pb-fec.active{background:linear-gradient(150deg,#e74c3c,#9b59b6);box-shadow:0 4px 14px rgba(155,89,182,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
-.pb-hist.active{background:linear-gradient(150deg,#e67e22,#c0392b);box-shadow:0 4px 14px rgba(192,57,43,0.45),0 1px 0 rgba(255,255,255,0.35) inset;text-shadow:0 1px 2px rgba(0,0,0,0.2);}
 
 #iframe-wrap{flex:1;display:none;overflow:hidden;position:relative;z-index:10;}
 #iframe-wrap.active{display:block;}
@@ -119,6 +122,7 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
 
 <div class="bubbles" id="bubbles"></div>
 
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-row1">
     <button class="newara-logo" onclick="toggleMenu()">New<span>Ara</span></button>
@@ -128,12 +132,12 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
       <button class="subj-btn sb-eng" onclick="loadSubject('eng','english.html')">📚 English</button>
       <button class="subj-btn sb-geo" onclick="loadSubject('geo','geo.html')">🌍 Geo</button>
       <button class="subj-btn sb-fec" onclick="loadSubject('fec','fec.html')">⚖️ FEC</button>
-      <button class="subj-btn sb-hist" onclick="loadSubject('hist','hist.html')">📜 Historia</button>
     </div>
   </div>
   <div class="topbar-row2 hidden" id="pageRow"></div>
 </div>
 
+<!-- MENU -->
 <div class="menu-overlay" id="menuOverlay" onclick="closeMenu(event)">
   <div class="menu-panel">
     <div class="menu-hero">
@@ -144,12 +148,12 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
     <button class="menu-subj-btn msb-eng" onclick="loadSubject('eng','english.html')">📚 NewAraEnglish</button>
     <button class="menu-subj-btn msb-geo" onclick="loadSubject('geo','geo.html')">🌍 NewAraGeo</button>
     <button class="menu-subj-btn msb-fec" onclick="loadSubject('fec','fec.html')">⚖️ NewAraFEC</button>
-    <button class="menu-subj-btn msb-hist" onclick="loadSubject('hist','hist.html')">📜 NewAraHist</button>
     <div class="menu-sep"></div>
     <button class="menu-subj-btn msb-home" onclick="goHome()">🏠 Página principal</button>
   </div>
 </div>
 
+<!-- HOME -->
 <div id="home-page">
   <div class="home-logo">New<span>Ara</span></div>
   <div class="home-sub">Hecho por Newen</div>
@@ -157,39 +161,37 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
     <button class="home-card" onclick="loadSubject('eng','english.html')">
       <div class="home-card-inner">
         <div class="home-card-icon hci-eng">📚</div>
-        <div style="flex:1;"><div class="home-card-title">NewAraEnglish</div><div class="home-card-sub">So/Either/Neither · Tag Questions · Irregular Verbs</div></div>
+        <div style="flex:1;"><div class="home-card-title">NewAraEnglish</div>
+        <div class="home-card-sub">So/Either/Neither · Tag Questions · Irregular Verbs</div></div>
         <div class="home-card-arrow">›</div>
       </div>
     </button>
     <button class="home-card" onclick="loadSubject('geo','geo.html')">
       <div class="home-card-inner">
         <div class="home-card-icon hci-geo">🌍</div>
-        <div style="flex:1;"><div class="home-card-title">NewAraGeo</div><div class="home-card-sub">La Geografía · La Esfera · Ejercicios</div></div>
+        <div style="flex:1;"><div class="home-card-title">NewAraGeo</div>
+        <div class="home-card-sub">La Geografía · La Esfera · Ejercicios</div></div>
         <div class="home-card-arrow">›</div>
       </div>
     </button>
     <button class="home-card" onclick="loadSubject('fec','fec.html')">
       <div class="home-card-inner">
         <div class="home-card-icon hci-fec">⚖️</div>
-        <div style="flex:1;"><div class="home-card-title">NewAraFEC</div><div class="home-card-sub">La Libertad · Las Normas · Tabla · Ejercicios</div></div>
-        <div class="home-card-arrow">›</div>
-      </div>
-    </button>
-    <button class="home-card" onclick="loadSubject('hist','hist.html')">
-      <div class="home-card-inner">
-        <div class="home-card-icon hci-hist">📜</div>
-        <div style="flex:1;"><div class="home-card-title">NewAraHist</div><div class="home-card-sub">¿Qué es la Historia? · Corrientes · Dimensiones · Método · Periodización · Ejercicios</div></div>
+        <div style="flex:1;"><div class="home-card-title">NewAraFEC</div>
+        <div class="home-card-sub">La Libertad · Las Normas · Tabla · Ejercicios</div></div>
         <div class="home-card-arrow">›</div>
       </div>
     </button>
   </div>
 </div>
 
+<!-- IFRAME -->
 <div id="iframe-wrap">
   <iframe id="subject-frame" src="" title="Materia" allow="autoplay"></iframe>
 </div>
 
 <script>
+/* BUBBLES */
 (function(){
   const w=document.getElementById('bubbles');
   [20,28,15,34,22,13,30,18,25,11].forEach((s,i)=>{
@@ -199,53 +201,98 @@ body::after{width:300px;height:300px;bottom:-70px;left:-70px;background:radial-g
   });
 })();
 
+/* WATER */
 const SND_WATER = new Audio('data:audio/mp3;base64,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/AtsPPSKFGMdnoGQGqQfGOBhGpKHmU4FmHwZEoJhwTggAmrKniyx5c4kTDiMPOtZI4CBhY1IeQB15CCdv2lyHY9A1kDZs6eel7a/Jdae5ULzf+xTvTq3NPr4+If4pqe1//9v+rjzO287vz6JLMR5I24ySAP0UINoJKKTNMkiwBH9V+hU4m4P+3DoFhqUATk3yzGC4sxwxEBNY3LOpU5AJgVLAsdO/EX9emn0WVVyS+kbaxxNKUoCTI17qpLzUioklEu5Cher/4Q8lSvAwOEAEGjD9UPLyIyGpzVAlMelww2AzEARLwGBQIuwHA5Q1Vr7RaI85iIxHYEswoIZkOAhsRpev+mGg0bVN0DLmVjyGsjLWeOVVS17VZGdFDFHA/yAPiMQBgP0lPL7+mURBeUAEV9hBA2Eg5mq83Q3xtCiJ5AgfXe1ToCcdadwbMsFiouIaRIkKT+i/B/rL0pV/hk4+x6D32/nq7nuRHoqMDCjAKVTUN4nxNjRDORYmovUycrNRPJZWvX/+5JkDQADVGdTaeE1clPh2x09IxuLJPkdJLBqwTKXpChhjTBK8n87CaKtmfT2rX8ISF5CfEaYVCAJCyEzhJhLxP4uH/6Cg2EjCRvJ/k5P/l/mqrXnG3tv9PlU2vMyz5BIK3/cOynI5X7nJfvPajkqJWRw0BEbclLrcaRKfsP5vdMKntIh5Cs2GUCIFlVSqlBQYUJSIiBlyg6SDR7BaIjww7iVyeCrvcP4Sep+pUeoTNS3uIgt+deeeCsWdgITPBWIiNMcaBs6eeAAwEqKDAAwGn40QoH+u1axVJAGgmEsPQmK5ZOmxIVDWMfhmsYKjKYUv41arKsY46w1h/+3tTu1Q7/5rBSmsOzn5R1hqwWGJBGEnSxIKAUiEiV/1y1/rT/+kFmoGZCwQAUadaiVonItY5WP0gKk1L/IyNQZNSY1iClnDUEQEFGFVS2pHzWE1Jv/lKGpNsFQC/ARF2ssSCoCIhJ+wZ//Qzu/paFR5YlVAwAwOiAViwmFJEVKnE1F0k0jpU4XJD5KKhCNDQfKEaBuE6SThrLSqSadXUVk0k0wQNHS//uSZBmP8yxIL4kjNqIsAdZpAAMAAAABpAAAACAAADSAAAAEy2VDL/8jWX/I1YGClllBAwIUBiD0F5U/zUs7O7Xmyzs3zZo0p3Z2dnKLqiLFf/6qqaaQAAGQFM+WWyoZNf/NWoIEDEYqKin//+sVFv//xY09TfxZv//FRUUFv/FRUWVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVQ==');
-function playWater() { try{ SND_WATER.currentTime=0;  SND_WATER.play();  }catch(e){} }
-
-/* WATER DROP on all buttons */
-document.addEventListener('click', function(e){
-  const btn = e.target.closest('button, .home-card');
-  if(!btn) return;
-  playWater();
+function playWater(){ try{SND_WATER.currentTime=0;SND_WATER.play();}catch(e){} }
+document.addEventListener('click',function(e){
+  const b=e.target.closest('button,.home-card,.newara-logo');
+  if(b) playWater();
 });
 
-let currentSubject = 'home';
-let iframeLoaded = false;
+let curSubj = null;
+
+const PAGES = {
+  eng: [
+    { id:'sen', label:'◈ So/Either' },
+    { id:'tq',  label:'? Tag Q' },
+    { id:'ex',  label:'✏️ Ejercicios' },
+    { id:'iv',  label:'V Irregular' },
+  ],
+  geo: [
+    { id:'geo', label:'🌍 Geografía' },
+    { id:'esf', label:'🌐 La Esfera' },
+    { id:'ex',  label:'✏️ Ejercicios' },
+  ],
+  fec: [
+    { id:'lib', label:'⚖️ Libertad' },
+    { id:'nor', label:'📋 Normas' },
+    { id:'ref', label:'📊 Tabla' },
+    { id:'ex',  label:'✏️ Ejercicios' },
+  ],
+};
+
+function loadSubject(subj, file) {
+  closeMenuDirect();
+  curSubj = subj;
+
+  // Show iframe, hide home
+  document.getElementById('home-page').classList.add('hidden');
+  document.getElementById('iframe-wrap').classList.add('active');
+
+  // Load file in iframe
+  const frame = document.getElementById('subject-frame');
+  if(frame.dataset.loaded !== file) {
+    frame.src = file;
+    frame.dataset.loaded = file;
+  }
+
+  // Update subject buttons
+  document.querySelectorAll('.subj-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.sb-'+subj).classList.add('active');
+
+  // Show page buttons
+  const row = document.getElementById('pageRow');
+  row.classList.remove('hidden');
+  row.innerHTML = PAGES[subj].map((p,i) =>
+    `<button class="page-btn pb-${subj}${i===0?' active':''}" onclick="goToPage('${p.id}',this)">${p.label}</button>`
+  ).join('');
+}
+
+function goToPage(page, btn) {
+  document.querySelectorAll('#pageRow .page-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // Tell iframe to navigate
+  const frame = document.getElementById('subject-frame');
+  try { frame.contentWindow.postMessage({action:'showPage', page:page}, '*'); } catch(e){}
+}
+
+// Listen for page changes from iframe
+window.addEventListener('message', function(e) {
+  if(e.data && e.data.action==='pageChanged' && curSubj) {
+    const page = e.data.page;
+    const pages = PAGES[curSubj];
+    document.querySelectorAll('#pageRow .page-btn').forEach((b,i)=>{
+      b.classList.toggle('active', pages[i] && pages[i].id===page);
+    });
+  }
+});
 
 function goHome() {
-  currentSubject = 'home';
+  closeMenuDirect();
+  curSubj = null;
   document.getElementById('home-page').classList.remove('hidden');
   document.getElementById('iframe-wrap').classList.remove('active');
-  document.querySelectorAll('.subj-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById('subject-frame').src = '';
+  document.getElementById('subject-frame').dataset.loaded = '';
+  document.getElementById('pageRow').classList.add('hidden');
+  document.getElementById('pageRow').innerHTML = '';
+  document.querySelectorAll('.subj-btn').forEach(b=>b.classList.remove('active'));
   document.querySelector('.sb-home').classList.add('active');
-  iframeLoaded = false;
 }
 
-function loadSubject(subject, url) {
-  currentSubject = subject;
-  document.getElementById('home-page').classList.add('hidden');
-  const iframeWrap = document.getElementById('iframe-wrap');
-  const iframe = document.getElementById('subject-frame');
-  
-  iframeWrap.classList.add('active');
-  iframe.src = url;
-  
-  document.querySelectorAll('.subj-btn').forEach(btn => btn.classList.remove('active'));
-  const activeBtn = document.querySelector(`.sb-${subject}`);
-  if(activeBtn) activeBtn.classList.add('active');
-  
-  iframeLoaded = true;
-}
-
-function toggleMenu() {
-  document.getElementById('menuOverlay').classList.toggle('open');
-}
-
-function closeMenu(e) {
-  if(e.target === document.getElementById('menuOverlay')) {
-    document.getElementById('menuOverlay').classList.remove('open');
-  }
-}
+function toggleMenu(){ document.getElementById('menuOverlay').classList.toggle('open'); }
+function closeMenu(e){ if(e.target===document.getElementById('menuOverlay')) closeMenuDirect(); }
+function closeMenuDirect(){ document.getElementById('menuOverlay').classList.remove('open'); }
 </script>
 </body>
 </html>
