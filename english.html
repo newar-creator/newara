@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="NewAra">
+<meta name="apple-mobile-web-app-title" content="NewAraEnglish">
 <title>NewAraEnglish</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto+Condensed:wght@500&display=swap" rel="stylesheet">
 <style>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
 :root{
@@ -439,72 +440,30 @@ body::after{width:280px;height:280px;bottom:-60px;left:-60px;background:radial-g
 .ms-fec{background:rgba(231,76,60,0.15);color:#8b1a10;border-color:rgba(231,76,60,0.4);}
 .menu-goto-home{background:linear-gradient(150deg,#5ba3e8,#2a72cc);box-shadow:0 4px 14px rgba(42,114,204,0.35),0 1px 0 rgba(255,255,255,0.35) inset;}
 
-/* Hide topbar inside iframe */
+
+/* GRAMMAR TABLES */
+.grammar-table-wrap { overflow-x:auto; margin-top:4px; }
+.grammar-table { width:100%; border-collapse:collapse; font-family:'Nunito',sans-serif; font-size:12.5px; }
+.grammar-table th { background:rgba(142,127,240,0.18); color:#3a2ea0; font-weight:800; padding:8px 10px; text-align:left; border-bottom:2px solid rgba(142,127,240,0.25); }
+.grammar-table td { padding:7px 10px; border-bottom:1px solid rgba(200,220,235,0.4); color:var(--text-mid); font-weight:600; }
+.grammar-table tr:last-child td { border-bottom:none; }
+.grammar-table tr:nth-child(even) td { background:rgba(255,255,255,0.3); }
+
+/* STRUCT BOX */
+.struct-box { background:rgba(142,127,240,0.1); border-left:3px solid #8e7ff0; border-radius:0 12px 12px 0; padding:10px 14px; margin:8px 0; font-size:13px; font-weight:700; color:var(--text-dark); }
+
+/* CARD BODY TEXT */
+.card-body-text { font-size:13px; font-weight:600; color:var(--text-mid); line-height:1.6; }
+
+/* TOPBAR HIDE IN IFRAME */
+body.in-iframe .topbar, body.in-iframe .menu-overlay { display:none!important; }
+
 </style>
 </head>
 <body>
 
 <div class="bubbles" id="bubbles"></div>
-
-<!-- ══════════ TOP BAR ══════════ -->
-<div class="topbar">
-  <div class="newara-logo" onclick="toggleMenu()">New<span>Ara</span>English</div>
-  <div class="topbar-divider"></div>
-  <div class="topbar-pages">
-    <button class="page-btn pb-sen active" onclick="showPage('sen')">So · Either · Neither</button>
-    <button class="page-btn pb-tq"         onclick="showPage('tq')">Tag Questions</button>
-    <button class="page-btn pb-ex"         onclick="showPage('ex')">Ejercicios</button>
-    <button class="page-btn pb-iv"         onclick="showPage('iv')">Irregular Verbs</button>
-    <div class="menu-sep"></div>
-    <button class="menu-goto menu-goto-geo" onclick="window.open('https://newarageo.vercel.app/','_blank')">🌍 NewAraGeo →</button>
-    <button class="menu-goto menu-goto-fec" onclick="window.open('https://newara-fec.vercel.app/','_blank')">⚖️ NewAraFEC →</button>
-    <div class="menu-sep"></div>
-    <button class="menu-goto menu-goto-home" onclick="window.open('https://newara.vercel.app/','_blank')">🏠 Página principal →</button>
-  
-</div>
-</div>
-
-<!-- ══════════ MENU OVERLAY ══════════ -->
-<div class="menu-overlay" id="menuOverlay" onclick="closeMenu(event)">
-  <div class="menu-panel">
-    <div class="menu-title">NewAraEnglish · Grammar</div>
-    <button class="menu-item mi-sen" onclick="menuGoTo('sen')">
-      <div class="menu-item-icon">◈</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">So · Either · Neither</span>
-        <span class="menu-item-sub">Fichas interactivas · 3 palabras</span>
-      </div>
-    </button>
-    <button class="menu-item mi-tq" onclick="menuGoTo('tq')">
-      <div class="menu-item-icon">?</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">Preguntas Coletilla</span>
-        <span class="menu-item-sub">Tag questions · Tipo A, B y entonación</span>
-      </div>
-    </button>
-    <button class="menu-item mi-ex" onclick="menuGoTo('ex')">
-      <div class="menu-item-icon">✏</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">Ejercicios</span>
-        <span class="menu-item-sub">Opción múltiple · completar · V/F</span>
-      </div>
-    </button>
-    <div class="menu-sep"></div>
-    <button class="menu-item mi-iv" onclick="menuGoTo('iv')">
-      <div class="menu-item-icon">V</div>
-      <div class="menu-item-text">
-        <span class="menu-item-label">Irregular Verbs</span>
-        <span class="menu-item-sub">100 verbos · fichas · tabla · ejercicios</span>
-      </div>
-    </button>
-    <div class="menu-sep"></div>
-
-    <div class="menu-sep"></div>
-    <a class="menu-goto menu-goto-home" href="https://newara.vercel.app/">
-      🏠 Página principal →
-    </a>
-  </div>
-</div>
+<div class="topbar" style="display:none;"></div>
 
 <!-- ══════════ PAGE: SO / EITHER / NEITHER ══════════ -->
 <div class="page active" id="page-sen">
@@ -571,33 +530,169 @@ body::after{width:280px;height:280px;bottom:-60px;left:-60px;background:radial-g
 
 
 
+
+
+<!-- NEW PAGE: LET & ALLOW -->
+<div class="page" id="page-let">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-tq">L</div>
+      <h2>Let &amp; Allow</h2>
+    </div>
+    <p class="page-subtitle">Causative structures · Grammar</p>
+  </div>
+  <div class="inner-nav" id="let-inner-nav">
+    <button class="nav-btn btn-a active" onclick="letSetTab(0)">Let</button>
+    <button class="nav-btn btn-b" onclick="letSetTab(1)">Allow</button>
+    <button class="nav-btn btn-e" onclick="letSetTab(2)">Tabla</button>
+  </div>
+  <div class="scroll-area"><div id="let-app"></div></div>
+</div>
+
+<!-- NEW PAGE: VERBS OF PERCEPTION -->
+<div class="page" id="page-vop">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-iv">V</div>
+      <h2>Verbs of Perception</h2>
+    </div>
+    <p class="page-subtitle">See · Hear · Feel · Watch · Notice</p>
+  </div>
+  <div class="inner-nav" id="vop-inner-nav">
+    <button class="nav-btn btn-a active" onclick="vopSetTab(0)">Estructura</button>
+    <button class="nav-btn btn-b" onclick="vopSetTab(1)">Ejemplos</button>
+    <button class="nav-btn btn-e" onclick="vopSetTab(2)">Diferencia</button>
+  </div>
+  <div class="scroll-area"><div id="vop-app"></div></div>
+</div>
+
+<!-- NEW PAGE: ACTION VS STATE VERBS -->
+<div class="page" id="page-avs">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-sen">◈</div>
+      <h2>Action vs State</h2>
+    </div>
+    <p class="page-subtitle">Dynamic verbs · Stative verbs</p>
+  </div>
+  <div class="inner-nav" id="avs-inner-nav">
+    <button class="nav-btn btn-a active" onclick="avsSetTab(0)">Action</button>
+    <button class="nav-btn btn-b" onclick="avsSetTab(1)">State</button>
+    <button class="nav-btn btn-e" onclick="avsSetTab(2)">Tabla</button>
+  </div>
+  <div class="scroll-area"><div id="avs-app"></div></div>
+</div>
+
+<!-- NEW PAGE: PRESENT PERFECT -->
+<div class="page" id="page-pp">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-tq">P</div>
+      <h2>Present Perfect</h2>
+    </div>
+    <p class="page-subtitle">Simple · Continuous</p>
+  </div>
+  <div class="inner-nav" id="pp-inner-nav">
+    <button class="nav-btn btn-a active" onclick="ppSetTab(0)">Simple</button>
+    <button class="nav-btn btn-b" onclick="ppSetTab(1)">Continuous</button>
+    <button class="nav-btn btn-e" onclick="ppSetTab(2)">Diferencia</button>
+  </div>
+  <div class="scroll-area"><div id="pp-app"></div></div>
+</div>
+
+<!-- NEW PAGE: QUESTION TAGS, REPLY Q, SHORT ANS -->
+<div class="page" id="page-qrs">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-tq">?</div>
+      <h2>Questions &amp; Replies</h2>
+    </div>
+    <p class="page-subtitle">Tags · Reply questions · Short answers</p>
+  </div>
+  <div class="inner-nav" id="qrs-inner-nav">
+    <button class="nav-btn btn-a active" onclick="qrsSetTab(0)">Question Tags</button>
+    <button class="nav-btn btn-b" onclick="qrsSetTab(1)">Reply Q</button>
+    <button class="nav-btn btn-e" onclick="qrsSetTab(2)">Short Answers</button>
+  </div>
+  <div class="scroll-area"><div id="qrs-app"></div></div>
+</div>
+
+<!-- NEW PAGE: SO TOO EITHER NOR NEITHER -->
+<div class="page" id="page-sten">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-sen">◈</div>
+      <h2>So · Too · Either · Nor · Neither</h2>
+    </div>
+    <p class="page-subtitle">Agreement expressions</p>
+  </div>
+  <div class="inner-nav" id="sten-inner-nav">
+    <button class="nav-btn btn-so active" onclick="stenSetTab(0)">So / Too</button>
+    <button class="nav-btn btn-either" onclick="stenSetTab(1)">Either / Neither</button>
+    <button class="nav-btn btn-neither" onclick="stenSetTab(2)">Tabla completa</button>
+  </div>
+  <div class="scroll-area"><div id="sten-app"></div></div>
+</div>
+
+<!-- NEW PAGE: INDEFINITE PRONOUNS -->
+<div class="page" id="page-ind">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-iv">I</div>
+      <h2>Indefinite Pronouns</h2>
+    </div>
+    <p class="page-subtitle">Some- · Any- · No- · Every-</p>
+  </div>
+  <div class="inner-nav" id="ind-inner-nav">
+    <button class="nav-btn btn-a active" onclick="indSetTab(0)">Some-</button>
+    <button class="nav-btn btn-b" onclick="indSetTab(1)">Any-</button>
+    <button class="nav-btn btn-e" onclick="indSetTab(2)">No- / Every-</button>
+  </div>
+  <div class="scroll-area"><div id="ind-app"></div></div>
+</div>
+
+<!-- NEW PAGE: EXERCISES (ALL TOPICS) -->
+<div class="page" id="page-exnew">
+  <div class="page-header">
+    <div class="page-title-pill">
+      <div class="page-icon icon-ex">✏</div>
+      <h2>Ejercicios</h2>
+    </div>
+    <p class="page-subtitle">Todos los temas · Opción múltiple · V/F · Completar</p>
+  </div>
+  <div class="scroll-area"><div id="exnew-app"></div></div>
+</div>
+
+
 <script>
 
-/* Hide topbar and menu when inside iframe */
-if (window.self !== window.top) {
-  document.addEventListener('DOMContentLoaded', function() {
-    var tb = document.querySelector('.topbar');
-    if (tb) tb.style.display = 'none';
-    var mo = document.querySelector('.menu-overlay');
-    if (mo) mo.style.display = 'none';
-  });
-}
+/* Updated PAGE ROUTER with new pages */
+let letInited=false,vopInited=false,avsInited=false,ppInited=false,qrsInited=false,stenInited=false,indInited=false,exNewInited=false;
 
-/* postMessage listener - respond to page navigation from parent */
-window.addEventListener('message', function(e) {
-  if(e.data && e.data.action === 'showPage') {
-    if(typeof showPage === 'function') {
-      showPage(e.data.page);
-    }
-  }
-});
-/* Notify parent when page changes */
-var _origShowPage = typeof showPage === 'function' ? showPage : null;
+const pages = ['sen','tq','ex','iv','let','vop','avs','pp','qrs','sten','ind','exnew'];
+let currentPage = 'sen';
+let ivInited = false;
+
 function showPage(p) {
-  if(_origShowPage) _origShowPage(p);
+  pages.forEach(id => {
+    const el = document.getElementById('page-'+id);
+    if(el) el.classList.toggle('active', id===p);
+  });
+  currentPage = p;
   try { window.parent.postMessage({action:'pageChanged', page:p}, '*'); } catch(e){}
-}
+  if(p==='ex'      && !exStarted)    { exStarted=true; exStartGame(); }
+  if(p==='iv'      && !ivInited)     { ivInited=true; ivSetMode('flash'); }
+  if(p==='let'     && !letInited)    { letInited=true; renderLet(); }
+  if(p==='vop'     && !vopInited)    { vopInited=true; renderVop(); }
+  if(p==='avs'     && !avsInited)    { avsInited=true; renderAvs(); }
+  if(p==='pp'      && !ppInited)     { ppInited=true; renderPP(); }
+  if(p==='qrs'     && !qrsInited)    { qrsInited=true; renderQrs(); }
+  if(p==='sten'    && !stenInited)   { stenInited=true; renderSten(); }
+  if(p==='ind'     && !indInited)    { indInited=true; renderInd(); }
+  if(p==='exnew'   && !exNewInited)  { exNewInited=true; exNewStart(); }
 
+
+}
 /* ══════════════════════════════
    BUBBLES
 ══════════════════════════════ */
@@ -623,23 +718,7 @@ function playFlowers(){ try{ SND_FLOWERS.currentTime=0; SND_FLOWERS.play(); }cat
 const SND_WATER = new Audio('data:audio/mp3;base64,SUQzBAAAAAAAW1BSSVYAAAAuAAAAeyJub3RlIjoiIiwiZGF0ZSI6IjIwMjMtMDgtMjdUMDU6MjA6MjMuNjk3WiJ9VFNTRQAAAA8AAANMYXZmNTguNzYuMTAwAAAAAAAAAAAAAAD/+5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJbmZvAAAADwAAAAYAAAtsAElJSUlJSUlJSUlJSUlJSUltbW1tbW1tbW1tbW1tbW1tbZKSkpKSkpKSkpKSkpKSkpK2tra2tra2tra2tra2tra2ttvb29vb29vb29vb29vb29vb/////////////////////wAAAABMYXZjNTguMTMAAAAAAAAidgAAAAAkBiUAAAAAAAALbOmaKCMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+5BEAAABnwDOZQRgAC1gad2hiAAQXMdDmZeAAhAiafcy8AIAAmTIvSrwxwIAg4EKwfRfBAHwfD/KHMuD/4P+D//EAYEAPv/g+/Lh//85D///rB95c/wwAAAGu0kkSpNAAAAELg4CDonDFy4gOYIHP4f/kwQBB35j/8oGOCBz+CAIf/+B7FCM5EMqSUCigAABtNPsOaFSSsMZDiMlUvU4CBYMjNEmHLomutgPyLEOuybVhbI8TIyinkpiHHi4la+r2N/X7gRdYpiSmtUi4n+M2m8veSyv++l963vi/eyd7O8l/nn8z4i9QcPAqliHj5ufmHnc+2KTmtDD+5iL5uUrbFdlv/93/8cSahEW43HG22ko0BQIAcIcbGnmvuOy9E1KVZ8ZlboOrK2dv3GmrsjgjH4/1e/ZnFr7WTZXK+DHmcFehSuP1neyK6XUj7LA3MmbvIm5KyK9r6sa/vvbxdUxJmWnvrwerXatdNauVkz6V7I8l/me+V75f/////////l7jecwWGFG/+sZPA0qJBAjMjkkkkkkkjkAAAg0t3QkIOP/+5JECgAC9jlabmlgBF/D283MNACMPVdvvYKAMXajrbewUAZFUWJC2WEYJ6AKMhocFjwdVZy3t6BOKjMdJTrGR8uJiRs87B40ccY6Ftny2Zen91HX/xxEw+atl3FR3d1M3b203+6453/9/CnWoGSUAZVrfttttttttrRtrrS67GaAka/c4TGuJPUywb3M+g2i8EbCeMx2fGSS5sxykkYIVtdk+tSlsvZjy6KBqNEAEGEwy5gnKCKByJlwqChEUFF6gI2Ll3/FvUz89+Ud+ajACn01tsjUCPyqUtfGUwymibBgp7yOP7Xb1WJU88QOB0SNU4sdh5DFUWMgagaYhUkR6CUMc59w25qFOyOchUYjbVIJkdFVkmzGUjUde9qDkQiIlP//2tX4X4bhgX4YG+FBbZAT+tlkbKLb5+ncay+rgpUnJoC2vRp9aHcMYCp8xQVAocDxQ+LnOJkRz0IU0eQQHIYpZGMpUsfR3R9yJllPL3k7HfJZtX686Wsl/xkZ/x4zh6OH4p97Pi9r+39DqAAAgKE1rBMhgZblDAQHMAQUMkxy//uSZAoJA2cjUUMdGVA94QudPM8lkHVRPA14p8EWhaktl42AMCkCO4oJOf3nNCwZMSgmCoEp/PDamYnhTSzOgIQBYS4sf+LaTM1cKGIGoQASIj2LQm6MlGOA4BgMDCjhgzRLlhUkVU4AIYWMTMZrINa2r7Fbbfan3zRVO9b2YX10tkcACskycNE4QrkgYgZAPZDCwP6FixR71CQgJGGBrNJdt8TJuK9woATAJg8BBECZ7//////tT+/3rNeIQBJZmFCIdEzTGlT4VQIBiYc4oRiTjJGfajcZxAHBhigrGIQIMYOAFYsD2AgKEeEBa5l6Q/SSW3bz5ll9NKpmUSQEOE1cYrC7nZBrVEg8IigqHA+dtiCFYxVQHmELM5XGIues5kRXdmtYfI6stXTRqatHp2sJjFwgg+Px/jRsf8fxyAAAiBIBbKNyyo2xN744rYrcX2Nuw7UTkqN5BEkUtGo9wosY+t7FQmBF6gKMQse386h1fr8mGnjXFxg5QX+nrZvcjF0aaTrUVEYD4XuacOhGKCLIgkwhWEIZmHwgGr8qHjfRHf/7kmQPAAQUR0+DPTJSQeGLXT07Q4+9I2uuBLdw/AtsPPSKFGMdnoGQGqQfGOBhGpKHmU4FmHwZEoJhwTggAmrKniyx5c4kTDiMPOtZI4CBhY1IeQB15CCdv2lyHY9A1kDZs6eel7a/Jdae5ULzf+xTvTq3NPr4+If4pqe1//9v+rjzO287vz6JLMR5I24ySAP0UINoJKKTNMkiwBH9V+hU4m4P+3DoFhqUATk3yzGC4sxwxEBNY3LOpU5AJgVLAsdO/EX9emn0WVVyS+kbaxxNKUoCTI17qpLzUioklEu5Cher/4Q8lSvAwOEAEGjD9UPLyIyGpzVAlMelww2AzEARLwGBQIuwHA5Q1Vr7RaI85iIxHYEswoIZkOAhsRpev+mGg0bVN0DLmVjyGsjLWeOVVS17VZGdFDFHA/yAPiMQBgP0lPL7+mURBeUAEV9hBA2Eg5mq83Q3xtCiJ5AgfXe1ToCcdadwbMsFiouIaRIkKT+i/B/rL0pV/hk4+x6D32/nq7nuRHoqMDCjAKVTUN4nxNjRDORYmovUycrNRPJZWvX/+5JkDQADVGdTaeE1clPh2x09IxuLJPkdJLBqwTKXpChhjTBK8n87CaKtmfT2rX8ISF5CfEaYVCAJCyEzhJhLxP4uH/6Cg2EjCRvJ/k5P/l/mqrXnG3tv9PlU2vMyz5BIK3/cOynI5X7nJfvPajkqJWRw0BEbclLrcaRKfsP5vdMKntIh5Cs2GUCIFlVSqlBQYUJSIiBlyg6SDR7BaIjww7iVyeCrvcP4Sep+pUeoTNS3uIgt+deeeCsWdgITPBWIiNMcaBs6eeAAwEqKDAAwGn40QoH+u1axVJAGgmEsPQmK5ZOmxIVDWMfhmsYKjKYUv41arKsY46w1h/+3tTu1Q7/5rBSmsOzn5R1hqwWGJBGEnSxIKAUiEiV/1y1/rT/+kFmoGZCwQAUadaiVonItY5WP0gKk1L/IyNQZNSY1iClnDUEQEFGFVS2pHzWE1Jv/lKGpNsFQC/ARF2ssSCoCIhJ+wZ//Qzu/paFR5YlVAwAwOiAViwmFJEVKnE1F0k0jpU4XJD5KKhCNDQfKEaBuE6SThrLSqSadXUVk0k0wQNHS//uSZBmP8yxIL4kjNqIsAdZpAAMAAAABpAAAACAAADSAAAAEy2VDL/8jWX/I1YGClllBAwIUBiD0F5U/zUs7O7Xmyzs3zZo0p3Z2dnKLqiLFf/6qqaaQAAGQFM+WWyoZNf/NWoIEDEYqKin//+sVFv//xY09TfxZv//FRUUFv/FRUWVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVQ==');
 function playWater(){ try{ SND_WATER.currentTime=0; SND_WATER.play(); }catch(e){} }
 
-/* ══════════════════════════════
-   PAGE ROUTER
-══════════════════════════════ */
-let currentPage = 'sen';
-const pages = ['sen','tq','ex','iv'];
 
-function showPage(p){
-  pages.forEach(id=>{
-    document.getElementById('page-'+id).classList.toggle('active', id===p);
-  });
-  document.querySelectorAll('.page-btn').forEach((b,i)=>{
-    b.classList.toggle('active', pages[i]===p);
-  });
-  currentPage = p;
-  if(p==='ex' && !exStarted) { exStarted=true; exStartGame(); }
-  if(p==='iv' && !ivInited)  { ivInited=true;  ivRenderFlash(); }
-}
 
 /* ── MENU ── */
 function toggleMenu(){
@@ -864,7 +943,6 @@ function exShowResults(){
 /* ══════════════════════════════
    IRREGULAR VERBS
 ══════════════════════════════ */
-let ivInited=false, ivMode='flash', ivFlashList=[], ivFlashIdx=0, ivFlashFlipped=false, ivFlashGroup='all', ivFlashSeen=new Set();
 let ivExQs=[], ivExCur=0, ivExScore=0, ivExAnswered=false;
 
 const VERBS=[
@@ -1007,6 +1085,719 @@ document.addEventListener('click', function(e){
   if(btn.classList.contains('menu-download')) return;
   playWater();
 });
+
+/* INIT */
+
+
+/* ══ HIDE TOPBAR IN IFRAME ══ */
+if (window.self !== window.top) {
+  document.addEventListener('DOMContentLoaded', function() {
+    var tb = document.querySelector('.topbar');
+    if (tb) tb.style.display = 'none';
+    var mo = document.querySelector('.menu-overlay');
+    if (mo) mo.style.display = 'none';
+  });
+}
+
+/* postMessage */
+window.addEventListener('message', function(e){
+  if(e.data && e.data.action==='showPage') showPage(e.data.page);
+});
+
+/* ══════════ LET & ALLOW ══════════ */
+let letTab = 0;
+const LET_DATA = [
+  {
+    title: 'LET + bare infinitive',
+    color: '#8e7ff0',
+    structure: 'Subject + LET + Object + bare infinitive (without TO)',
+    note: 'LET significa "permitir" de forma informal/directa. NO usa "to" antes del verbo.',
+    examples: [
+      ['My parents let me stay out late.', 'Mis padres me dejan quedarme hasta tarde.'],
+      ['She let him borrow her car.', 'Ella le permitió usar su auto.'],
+      ['Let me help you.', 'Déjame ayudarte.'],
+      ['They won\'t let us in.', 'No nos van a dejar entrar.'],
+    ],
+    negative: 'Subject + DIDN\'T LET + Object + bare infinitive',
+    neg_ex: [['They didn\'t let him speak.', 'No le dejaron hablar.']]
+  },
+  {
+    title: 'ALLOW + to infinitive',
+    color: '#3dcb96',
+    structure: 'Subject + ALLOW + Object + TO + infinitive',
+    note: 'ALLOW es más formal que LET. Siempre usa "to" antes del verbo.',
+    examples: [
+      ['My parents allow me to stay out late.', 'Mis padres me permiten quedarme hasta tarde.'],
+      ['She allowed him to borrow her car.', 'Ella le permitió usar su auto.'],
+      ['Students are not allowed to use phones.', 'Los estudiantes no tienen permitido usar teléfonos.'],
+      ['Will they allow us to enter?', '¿Nos permitirán entrar?'],
+    ],
+    negative: 'Subject + DIDN\'T ALLOW + Object + TO + infinitive',
+    neg_ex: [['They didn\'t allow him to speak.', 'No le permitieron hablar.']]
+  },
+  {
+    title: 'Tabla comparativa: LET vs ALLOW',
+    color: '#5ba3e8',
+    isTable: true,
+    rows: [
+      ['', 'LET', 'ALLOW'],
+      ['Registro', 'Informal', 'Formal'],
+      ['Estructura', 'let + obj + bare inf.', 'allow + obj + TO + inf.'],
+      ['Pasivo', '❌ (no se usa)', 'be allowed to + inf.'],
+      ['Ejemplo +', 'She let me go.', 'She allowed me to go.'],
+      ['Ejemplo -', 'She didn\'t let me go.', 'She didn\'t allow me to go.'],
+      ['Pasivo ej.', '—', 'I was allowed to go.'],
+    ]
+  }
+];
+
+function letSetTab(i) {
+  letTab = i;
+  document.querySelectorAll('#let-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderLet();
+}
+
+function renderLet() {
+  const d = LET_DATA[letTab];
+  const app = document.getElementById('let-app');
+  if (d.isTable) {
+    const rows = d.rows.map((r,i) => `<tr>${r.map((c,j)=>`<${i===0||j===0?'th':'td'}>${c}</${i===0||j===0?'th':'td'}>`).join('')}</tr>`).join('');
+    app.innerHTML = `<div class="card"><div class="card-body-text" style="font-weight:800;font-size:15px;color:var(--text-dark);margin-bottom:12px;">${d.title}</div><div class="grammar-table-wrap"><table class="grammar-table">${rows}</table></div></div>`;
+    return;
+  }
+  app.innerHTML = `
+    <div class="card">
+      <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+      <div class="struct-box" style="border-left-color:${d.color};">${d.structure}</div>
+      <div class="note-box" style="border-left-color:${d.color};">${d.note}</div>
+      <div class="examples" style="margin-top:12px;">
+        ${d.examples.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}
+      </div>
+      <div class="neg-block" style="margin-top:12px;">
+        <div class="neg-title">Negativo: ${d.negative}</div>
+        ${d.neg_ex.map(([en,es])=>`<div class="neg-row"><span class="neg-en">${en}</span><span>${es}</span></div>`).join('')}
+      </div>
+    </div>`;
+}
+
+/* ══════════ VERBS OF PERCEPTION ══════════ */
+let vopTab = 0;
+const VOP_DATA = [
+  {
+    title: 'Estructura: Verbs of Perception',
+    intro: 'Los verbos de percepción (see, hear, feel, watch, notice, smell, listen to) se combinan con objetos seguidos de infinitivo o -ing con significados distintos.',
+    verbs: ['see','hear','feel','watch','notice','smell','listen to','observe'],
+    structure: [
+      { form: 'Verb + obj + bare infinitive', meaning: 'Acción completa / resultado', example: 'I saw him cross the street. (lo vi cruzar — toda la acción)' },
+      { form: 'Verb + obj + -ing', meaning: 'Acción en progreso / parcial', example: 'I saw him crossing the street. (lo vi cruzando — en ese momento)' },
+    ]
+  },
+  {
+    title: 'Ejemplos con cada verbo',
+    pairs: [
+      { verb: 'SEE 👁️', ex: [['I saw her leave the building.','La vi salir del edificio (completo).'],['I saw her leaving the building.','La vi saliendo del edificio (en progreso).']] },
+      { verb: 'HEAR 👂', ex: [['I heard him shout.','Lo escuché gritar (una vez).'],['I heard him shouting.','Lo escuché gritando (por un rato).']] },
+      { verb: 'FEEL 🤲', ex: [['I felt something touch my hand.','Sentí algo tocarme la mano.'],['I felt the rain falling.','Sentí la lluvia cayendo.']] },
+      { verb: 'WATCH 👀', ex: [['We watched the sun set.','Vimos el sol ponerse (completo).'],['We watched her dancing.','La miramos bailando (en progreso).']] },
+      { verb: 'NOTICE 🔍', ex: [['I noticed him take the keys.','Noté que tomó las llaves.'],['I noticed him acting strangely.','Noté que actuaba extraño.']] },
+    ]
+  },
+  {
+    title: 'Bare infinitive vs -ing: Diferencia clave',
+    isTable: true,
+    rows: [
+      ['', 'Bare infinitive', '-ing form'],
+      ['Significado', 'Acción completa, de inicio a fin', 'Acción en progreso, parcial'],
+      ['Ej. SEE', 'I saw him fall.', 'I saw him falling.'],
+      ['Ej. HEAR', 'I heard it break.', 'I heard it breaking.'],
+      ['Ej. WATCH', 'I watched her finish.', 'I watched her finishing.'],
+      ['Pasivo', 'He was seen to leave.', 'He was seen leaving.'],
+    ]
+  }
+];
+
+function vopSetTab(i) {
+  vopTab = i;
+  document.querySelectorAll('#vop-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderVop();
+}
+
+function renderVop() {
+  const d = VOP_DATA[vopTab];
+  const app = document.getElementById('vop-app');
+  if (d.isTable) {
+    const rows = d.rows.map((r,i)=>`<tr>${r.map((c,j)=>`<${i===0||j===0?'th':'td'}>${c}</${i===0||j===0?'th':'td'}>`).join('')}</tr>`).join('');
+    app.innerHTML = `<div class="card"><div class="card-body-text" style="font-weight:800;font-size:15px;color:var(--text-dark);margin-bottom:12px;">${d.title}</div><div class="grammar-table-wrap"><table class="grammar-table">${rows}</table></div></div>`;
+    return;
+  }
+  if (vopTab === 0) {
+    app.innerHTML = `<div class="card">
+      <div class="meaning-label">${d.title}</div>
+      <p style="font-size:13px;font-weight:600;color:var(--text-mid);margin:8px 0 14px;">${d.intro}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+        ${d.verbs.map(v=>`<span style="padding:4px 12px;background:rgba(142,127,240,0.15);border-radius:20px;font-size:13px;font-weight:700;color:#3a2ea0;border:1px solid rgba(142,127,240,0.3);">${v}</span>`).join('')}
+      </div>
+      ${d.structure.map(s=>`<div style="margin-bottom:12px;padding:12px;background:rgba(255,255,255,0.5);border-radius:14px;border-left:3px solid #8e7ff0;">
+        <div style="font-weight:800;font-size:13.5px;color:var(--text-dark);">${s.form}</div>
+        <div style="font-size:12.5px;font-weight:600;color:#3a2ea0;margin:3px 0;">→ ${s.meaning}</div>
+        <div style="font-size:12px;font-weight:600;color:var(--text-mid);font-style:italic;">${s.example}</div>
+      </div>`).join('')}
+    </div>`;
+  } else {
+    app.innerHTML = `<div class="card">
+      <div class="meaning-label">${d.title}</div>
+      ${d.pairs.map(p=>`<div style="margin-bottom:14px;"><div style="font-weight:800;font-size:13.5px;color:var(--text-dark);margin-bottom:6px;">${p.verb}</div>
+        <div class="examples">${p.ex.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>
+      </div>`).join('')}
+    </div>`;
+  }
+}
+
+/* ══════════ ACTION VS STATE VERBS ══════════ */
+let avsTab = 0;
+const AVS_DATA = [
+  {
+    title: 'Action Verbs (Dynamic)',
+    color: '#3dcb96',
+    desc: 'Los action verbs describen acciones físicas o mentales que ocurren en un momento. Se pueden usar en tiempos continuos (-ing).',
+    groups: [
+      { label: 'Físicos', verbs: ['run','eat','write','read','play','walk','cook','build','throw','jump'] },
+      { label: 'Comunicación', verbs: ['speak','tell','ask','shout','whisper','say'] },
+      { label: 'Cambio', verbs: ['grow','change','improve','develop','increase'] },
+    ],
+    examples: [
+      ['She is eating lunch right now.','Ella está almorzando ahora mismo.'],
+      ['They were playing football.','Estaban jugando al fútbol.'],
+    ],
+    note: '✅ Se pueden usar en TODOS los tiempos, incluyendo continuos.'
+  },
+  {
+    title: 'State Verbs (Stative)',
+    color: '#e74c3c',
+    desc: 'Los state verbs describen estados, no acciones. Generalmente NO se usan en tiempos continuos.',
+    groups: [
+      { label: 'Emoción/Opinión', verbs: ['love','hate','like','prefer','want','need','wish','fear'] },
+      { label: 'Mente/Percepción', verbs: ['know','believe','think','understand','remember','forget','mean','seem'] },
+      { label: 'Posesión', verbs: ['have','own','belong','possess','contain'] },
+      { label: 'Sentidos', verbs: ['see','hear','smell','taste','feel'] },
+    ],
+    examples: [
+      ['I know the answer. ✅', 'Sé la respuesta.'],
+      ['I am knowing the answer. ❌', '(INCORRECTO — know es stative)'],
+      ['She has a car. ✅', 'Ella tiene un auto.'],
+      ['She is having a car. ❌', '(INCORRECTO — have = posesión)'],
+    ],
+    note: '⚠️ Algunos verbos (have, think, see) pueden ser ACTION o STATE según el significado.'
+  },
+  {
+    title: 'Tabla: Action vs State',
+    isTable: true,
+    rows: [
+      ['', 'Action Verbs', 'State Verbs'],
+      ['¿Qué expresan?', 'Acciones, actividades', 'Estados, condiciones'],
+      ['¿Continuos?', '✅ Sí', '❌ No (generalmente)'],
+      ['Ejemplos', 'run, eat, play, write', 'know, love, have, seem'],
+      ['Present Simple', 'He works every day.', 'She loves music.'],
+      ['Present Continuous', 'He is working now. ✅', 'She is loving music. ❌'],
+      ['Doble significado', 'I\'m having lunch (action)', 'I have a car (possession)'],
+    ]
+  }
+];
+
+function avsSetTab(i) {
+  avsTab = i;
+  document.querySelectorAll('#avs-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderAvs();
+}
+
+function renderAvs() {
+  const d = AVS_DATA[avsTab];
+  const app = document.getElementById('avs-app');
+  if (d.isTable) {
+    const rows = d.rows.map((r,i)=>`<tr>${r.map((c,j)=>`<${i===0||j===0?'th':'td'}>${c}</${i===0||j===0?'th':'td'}>`).join('')}</tr>`).join('');
+    app.innerHTML = `<div class="card"><div class="card-body-text" style="font-weight:800;font-size:15px;color:var(--text-dark);margin-bottom:12px;">${d.title}</div><div class="grammar-table-wrap"><table class="grammar-table">${rows}</table></div></div>`;
+    return;
+  }
+  app.innerHTML = `<div class="card">
+    <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+    <p style="font-size:13px;font-weight:600;color:var(--text-mid);margin:8px 0 12px;">${d.desc}</p>
+    ${d.groups.map(g=>`<div style="margin-bottom:10px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:5px;">${g.label}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;">${g.verbs.map(v=>`<span style="padding:3px 10px;background:${d.color}18;border-radius:20px;font-size:12.5px;font-weight:700;color:${d.color};border:1px solid ${d.color}35;">${v}</span>`).join('')}</div>
+    </div>`).join('')}
+    <div class="examples" style="margin-top:10px;">
+      ${d.examples.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}
+    </div>
+    <div class="note-box" style="border-left-color:${d.color};margin-top:10px;">${d.note}</div>
+  </div>`;
+}
+
+/* ══════════ PRESENT PERFECT ══════════ */
+let ppTab = 0;
+const PP_DATA = [
+  {
+    title: 'Present Perfect Simple',
+    color: '#8e7ff0',
+    structure: 'Subject + HAVE/HAS + past participle (3rd form)',
+    uses: [
+      { label: 'Experiencias de vida', ex: [['I have been to Paris.','He estado en París.'],['She has never eaten sushi.','Ella nunca ha comido sushi.']] },
+      { label: 'Acciones recientes con resultado presente', ex: [['I have lost my keys.','Perdí las llaves (y no las encuentro).'],['He has broken his leg.','Se ha roto la pierna (y aún está así).']] },
+      { label: 'Con: just, already, yet, ever, never', ex: [['I have just arrived.','Acabo de llegar.'],['Have you eaten yet?','¿Ya comiste?'],['She has already finished.','Ella ya terminó.']] },
+      { label: 'Acciones que empezaron y continúan (with for/since)', ex: [['I have lived here for 5 years.','Vivo aquí desde hace 5 años.'],['She has worked there since 2020.','Trabaja ahí desde 2020.']] },
+    ],
+    key_words: ['just','already','yet','ever','never','for','since','recently','lately','so far','up to now'],
+  },
+  {
+    title: 'Present Perfect Continuous',
+    color: '#3dcb96',
+    structure: 'Subject + HAVE/HAS + BEEN + verb-ing',
+    uses: [
+      { label: 'Acción que empezó en el pasado y continúa', ex: [['I have been studying for 3 hours.','Llevo 3 horas estudiando.'],['She has been waiting since 9am.','Lleva esperando desde las 9.']] },
+      { label: 'Acción reciente con evidencia presente', ex: [['You have been crying. Your eyes are red.','Has estado llorando. Tus ojos están rojos.'],['He has been running. He is sweaty.','Ha estado corriendo. Está sudado.']] },
+      { label: 'Acción temporal o que aún puede continuar', ex: [['They have been building that house for months.','Llevan meses construyendo esa casa.'],['I have been thinking about you.','He estado pensando en ti.']] },
+    ],
+    key_words: ['for','since','all day','all morning','lately','recently','how long'],
+  },
+  {
+    title: 'Simple vs Continuous: Diferencia',
+    isTable: true,
+    rows: [
+      ['', 'Present Perfect Simple', 'Present Perfect Continuous'],
+      ['Estructura', 'have/has + past participle', 'have/has + been + -ing'],
+      ['Enfoque en...', 'Resultado / experiencia', 'Duración / proceso'],
+      ['Ej. resultado', 'I have written the report. ✅ (está listo)', '—'],
+      ['Ej. proceso', '—', 'I have been writing the report. (todavía lo escribo)'],
+      ['Con for/since', 'How long have you known her?', 'How long have you been waiting?'],
+      ['Verbos stative', 'I have known him for years. ✅', 'I have been knowing him. ❌'],
+      ['Señal temporal', 'just, already, yet, ever, never', 'for, since, all day, lately'],
+    ]
+  }
+];
+
+function ppSetTab(i) {
+  ppTab = i;
+  document.querySelectorAll('#pp-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderPP();
+}
+
+function renderPP() {
+  const d = PP_DATA[ppTab];
+  const app = document.getElementById('pp-app');
+  if (d.isTable) {
+    const rows = d.rows.map((r,i)=>`<tr>${r.map((c,j)=>`<${i===0||j===0?'th':'td'}>${c}</${i===0||j===0?'th':'td'}>`).join('')}</tr>`).join('');
+    app.innerHTML = `<div class="card"><div class="card-body-text" style="font-weight:800;font-size:15px;color:var(--text-dark);margin-bottom:12px;">${d.title}</div><div class="grammar-table-wrap"><table class="grammar-table">${rows}</table></div></div>`;
+    return;
+  }
+  app.innerHTML = `<div class="card">
+    <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+    <div class="struct-box" style="border-left-color:${d.color};">${d.structure}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 14px;">
+      ${d.key_words.map(w=>`<span style="padding:3px 10px;background:${d.color}18;border-radius:20px;font-size:12px;font-weight:700;color:${d.color};border:1px solid ${d.color}35;">${w}</span>`).join('')}
+    </div>
+    ${d.uses.map(u=>`<div style="margin-bottom:12px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:6px;">📌 ${u.label}</div>
+      <div class="examples">${u.ex.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>
+    </div>`).join('')}
+  </div>`;
+}
+
+/* ══════════ QUESTION TAGS, REPLY Q, SHORT ANS ══════════ */
+let qrsTab = 0;
+const QRS_DATA = [
+  {
+    title: 'Question Tags (Preguntas Coletilla)',
+    color: '#5ba3e8',
+    rules: [
+      { rule: 'Oración + → Tag -', ex: [['You are happy, aren\'t you?','Eres feliz, ¿verdad?'],['She can swim, can\'t she?','Ella sabe nadar, ¿no?'],['They have finished, haven\'t they?','Terminaron, ¿no?']] },
+      { rule: 'Oración - → Tag +', ex: [['You aren\'t tired, are you?','No estás cansado, ¿o sí?'],['He can\'t drive, can he?','Él no sabe manejar, ¿o sí?'],['They haven\'t eaten, have they?','No comieron, ¿o sí?']] },
+    ],
+    special: [
+      { case: 'I am → aren\'t I', ex: 'I\'m late, aren\'t I?' },
+      { case: 'Let\'s → shall we?', ex: 'Let\'s go, shall we?' },
+      { case: 'Imperativo → will you?', ex: 'Open the door, will you?' },
+      { case: 'I have (possessive) → haven\'t I?', ex: 'I have a car, haven\'t I?' },
+    ]
+  },
+  {
+    title: 'Reply Questions (Preguntas de Respuesta)',
+    color: '#43e97b',
+    desc: 'Las reply questions son preguntas cortas que usamos para mostrar interés o sorpresa ante lo que alguien dice. Son AFIRMATIVAS si la oración es positiva, NEGATIVAS si es negativa.',
+    examples: [
+      { statement: '"I went to London last week."', reply: '"Did you?" / "Oh, did you?"', note: 'afirmativo → afirmativo (sorpresa/interés)' },
+      { statement: '"She can\'t come to the party."', reply: '"Can\'t she?" / "Oh, can\'t she?"', note: 'negativo → negativo' },
+      { statement: '"They have bought a new house."', reply: '"Have they?"', note: 'have/has → Have/Has + subject?' },
+      { statement: '"He was very rude."', reply: '"Was he?"', note: 'was/were → Was/Were + subject?' },
+      { statement: '"I will call you tomorrow."', reply: '"Will you?"', note: 'will → Will + subject?' },
+    ]
+  },
+  {
+    title: 'Short Answers',
+    color: '#f6d365',
+    desc: 'Las short answers son respuestas cortas. Usan el auxiliar de la pregunta + pronombre. NUNCA se contraen las afirmativas.',
+    table: [
+      ['Pregunta', 'Respuesta Afirmativa', 'Respuesta Negativa'],
+      ['Are you a student?', 'Yes, I am. ✅', 'No, I\'m not.'],
+      ['Can she swim?', 'Yes, she can. ✅', 'No, she can\'t.'],
+      ['Did they arrive?', 'Yes, they did. ✅', 'No, they didn\'t.'],
+      ['Has he finished?', 'Yes, he has. ✅', 'No, he hasn\'t.'],
+      ['Will it rain?', 'Yes, it will. ✅', 'No, it won\'t.'],
+      ['Do you like it?', 'Yes, I do. ✅', 'No, I don\'t.'],
+    ],
+    note: '⚠️ "Yes, I\'m." ❌ — Nunca se contrae el auxiliar en short answers afirmativas.'
+  }
+];
+
+function qrsSetTab(i) {
+  qrsTab = i;
+  document.querySelectorAll('#qrs-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderQrs();
+}
+
+function renderQrs() {
+  const d = QRS_DATA[qrsTab];
+  const app = document.getElementById('qrs-app');
+  if (qrsTab === 0) {
+    app.innerHTML = `<div class="card">
+      <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+      ${d.rules.map(r=>`<div style="margin-bottom:12px;">
+        <div style="font-weight:800;font-size:13px;color:var(--text-dark);padding:6px 10px;background:rgba(255,255,255,0.5);border-radius:10px;margin-bottom:6px;">📌 ${r.rule}</div>
+        <div class="examples">${r.ex.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>
+      </div>`).join('')}
+      <div style="margin-top:12px;"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:8px;">Casos especiales</div>
+        ${d.special.map(s=>`<div style="padding:8px 12px;margin-bottom:6px;background:rgba(91,163,232,0.1);border-radius:12px;border-left:3px solid #5ba3e8;">
+          <div style="font-weight:800;font-size:13px;color:var(--text-dark);">${s.case}</div>
+          <div style="font-size:12.5px;font-weight:600;color:var(--text-mid);font-style:italic;">${s.ex}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  } else if (qrsTab === 1) {
+    app.innerHTML = `<div class="card">
+      <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+      <p style="font-size:12.5px;font-weight:600;color:var(--text-mid);margin:8px 0 14px;">${d.desc}</p>
+      ${d.examples.map(ex=>`<div style="margin-bottom:10px;padding:10px 12px;background:rgba(255,255,255,0.5);border-radius:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text-dark);">${ex.statement}</div>
+        <div style="font-size:14px;font-weight:800;color:#43e97b;margin:3px 0;">${ex.reply}</div>
+        <div style="font-size:11.5px;font-weight:600;color:var(--text-light);font-style:italic;">${ex.note}</div>
+      </div>`).join('')}
+    </div>`;
+  } else {
+    const rows = d.table.map((r,i)=>`<tr>${r.map((c,j)=>`<${i===0||j===0?'th':'td'}>${c}</${i===0||j===0?'th':'td'}>`).join('')}</tr>`).join('');
+    app.innerHTML = `<div class="card">
+      <div class="meaning-label" style="background:${d.color}20;color:#b8860b;">${d.title}</div>
+      <p style="font-size:12.5px;font-weight:600;color:var(--text-mid);margin:8px 0 12px;">${d.desc}</p>
+      <div class="grammar-table-wrap"><table class="grammar-table">${rows}</table></div>
+      <div class="note-box" style="border-left-color:#f6d365;margin-top:12px;">${d.note}</div>
+    </div>`;
+  }
+}
+
+/* ══════════ SO TOO EITHER NOR NEITHER ══════════ */
+let stenTab = 0;
+const STEN_DATA = [
+  {
+    title: 'SO / TOO — Acuerdo con oraciones positivas',
+    color: '#8e7ff0',
+    sections: [
+      {
+        label: 'SO (inversión)',
+        structure: '+ Statement → So + auxiliary + subject',
+        examples: [
+          ['"I am tired." "So am I."', 'Estoy cansado. — Yo también.'],
+          ['"She can swim." "So can I."', 'Ella sabe nadar. — Yo también.'],
+          ['"They went to Paris." "So did we."', 'Ellos fueron a París. — Nosotros también.'],
+          ['"He has eaten." "So have I."', 'Él comió. — Yo también.'],
+        ]
+      },
+      {
+        label: 'TOO (al final, sin inversión)',
+        structure: '+ Statement → Subject + auxiliary + too',
+        examples: [
+          ['"I am tired." "I am too." / "Me too."', 'Estoy cansado. — Yo también.'],
+          ['"She can swim." "I can too."', 'Ella sabe nadar. — Yo también.'],
+          ['"They went to Paris." "We did too."', 'Ellos fueron. — Nosotros también.'],
+        ]
+      }
+    ]
+  },
+  {
+    title: 'EITHER / NEITHER / NOR — Acuerdo con oraciones negativas',
+    color: '#e74c3c',
+    sections: [
+      {
+        label: 'NEITHER (inversión)',
+        structure: '- Statement → Neither + auxiliary + subject',
+        examples: [
+          ['"I\'m not tired." "Neither am I."', 'No estoy cansado. — Yo tampoco.'],
+          ['"She can\'t swim." "Neither can I."', 'Ella no sabe nadar. — Yo tampoco.'],
+          ['"They didn\'t go." "Neither did we."', 'Ellos no fueron. — Nosotros tampoco.'],
+        ]
+      },
+      {
+        label: 'NOR (más formal, inversión)',
+        structure: '- Statement → Nor + auxiliary + subject',
+        examples: [
+          ['"I\'m not happy." "Nor am I."', 'No estoy feliz. — Yo tampoco.'],
+          ['"He hasn\'t called." "Nor has she."', 'Él no llamó. — Ella tampoco.'],
+        ]
+      },
+      {
+        label: 'EITHER (al final, sin inversión)',
+        structure: '- Statement → Subject + auxiliary + not... either',
+        examples: [
+          ['"I\'m not tired." "I\'m not either." / "Me neither."', 'No estoy cansado. — Yo tampoco.'],
+          ['"She can\'t swim." "I can\'t either."', 'Ella no sabe. — Yo tampoco.'],
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Tabla completa: So · Too · Either · Neither · Nor',
+    isTable: true,
+    rows: [
+      ['Palabra', 'Uso', 'Posición', 'Ejemplo'],
+      ['SO', 'Acuerdo positivo', 'Al inicio, inversión', '"I like it." "So do I."'],
+      ['TOO', 'Acuerdo positivo', 'Al final, sin inversión', '"I like it." "I do too."'],
+      ['EITHER', 'Acuerdo negativo', 'Al final, sin inversión', '"I don\'t like it." "I don\'t either."'],
+      ['NEITHER', 'Acuerdo negativo', 'Al inicio, inversión', '"I don\'t like it." "Neither do I."'],
+      ['NOR', 'Acuerdo negativo (formal)', 'Al inicio, inversión', '"I don\'t like it." "Nor do I."'],
+    ]
+  }
+];
+
+function stenSetTab(i) {
+  stenTab = i;
+  document.querySelectorAll('#sten-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderSten();
+}
+
+function renderSten() {
+  const d = STEN_DATA[stenTab];
+  const app = document.getElementById('sten-app');
+  if (d.isTable) {
+    const rows = d.rows.map((r,i)=>`<tr>${r.map((c,j)=>`<${i===0||j===0?'th':'td'}>${c}</${i===0||j===0?'th':'td'}>`).join('')}</tr>`).join('');
+    app.innerHTML = `<div class="card"><div class="card-body-text" style="font-weight:800;font-size:15px;color:var(--text-dark);margin-bottom:12px;">${d.title}</div><div class="grammar-table-wrap"><table class="grammar-table">${rows}</table></div></div>`;
+    return;
+  }
+  app.innerHTML = `<div class="card">
+    <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+    ${d.sections.map(s=>`<div style="margin-bottom:14px;">
+      <div style="font-weight:800;font-size:13px;color:var(--text-dark);padding:6px 10px;background:${d.color}15;border-radius:10px;margin-bottom:2px;">${s.label}</div>
+      <div class="struct-box" style="border-left-color:${d.color};font-size:12.5px;">${s.structure}</div>
+      <div class="examples">${s.examples.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>
+    </div>`).join('')}
+  </div>`;
+}
+
+/* ══════════ INDEFINITE PRONOUNS ══════════ */
+let indTab = 0;
+const IND_DATA = [
+  {
+    title: 'SOME- (afirmativo)',
+    color: '#43e97b',
+    words: [
+      { word: 'SOMEONE / SOMEBODY', meaning: 'Alguien', ex: [['Someone called you.','Alguien te llamó.'],['Somebody left this here.','Alguien dejó esto aquí.']] },
+      { word: 'SOMETHING', meaning: 'Algo', ex: [['I need something to eat.','Necesito algo para comer.'],['Something smells good.','Algo huele bien.']] },
+      { word: 'SOMEWHERE', meaning: 'En algún lugar', ex: [['Let\'s go somewhere nice.','Vayamos a algún lugar lindo.'],['I left my keys somewhere.','Dejé las llaves en algún lado.']] },
+    ],
+    note: 'Se usan en oraciones afirmativas y en preguntas cuando ofrecemos/pedimos algo.'
+  },
+  {
+    title: 'ANY- (negativo/pregunta)',
+    color: '#5ba3e8',
+    words: [
+      { word: 'ANYONE / ANYBODY', meaning: 'Alguien (en neg./preg.) / Cualquiera', ex: [['Is anyone there?','¿Hay alguien ahí?'],['I didn\'t see anybody.','No vi a nadie.'],['Anyone can do this.','Cualquiera puede hacer esto.']] },
+      { word: 'ANYTHING', meaning: 'Algo / Cualquier cosa', ex: [['Do you need anything?','¿Necesitás algo?'],['I didn\'t eat anything.','No comí nada.'],['She can eat anything.','Ella puede comer cualquier cosa.']] },
+      { word: 'ANYWHERE', meaning: 'En algún lugar / En ningún lugar / En cualquier lugar', ex: [['Did you go anywhere?','¿Fuiste a algún lado?'],['I can\'t find it anywhere.','No lo encuentro en ningún lado.']] },
+    ],
+    note: 'Se usan en preguntas, negaciones y oraciones afirmativas con significado de "cualquier".'
+  },
+  {
+    title: 'NO- y EVERY-',
+    isDouble: true,
+    sections: [
+      {
+        title: 'NO- (ningún)',
+        color: '#e74c3c',
+        words: [
+          { word: 'NO ONE / NOBODY', meaning: 'Nadie', ex: [['Nobody came to the party.','Nadie vino a la fiesta.'],['There\'s no one here.','No hay nadie aquí.']] },
+          { word: 'NOTHING', meaning: 'Nada', ex: [['I have nothing to say.','No tengo nada que decir.'],['Nothing happened.','No pasó nada.']] },
+          { word: 'NOWHERE', meaning: 'En ningún lugar', ex: [['There is nowhere to sit.','No hay lugar para sentarse.']] },
+        ],
+        note: '⚠️ Con NO- no se usa la negación del verbo: "Nobody came." ✅ "Nobody didn\'t come." ❌'
+      },
+      {
+        title: 'EVERY- (todo)',
+        color: '#f6d365',
+        words: [
+          { word: 'EVERYONE / EVERYBODY', meaning: 'Todos', ex: [['Everyone knows her.','Todos la conocen.'],['Everybody is here.','Todos están aquí.']] },
+          { word: 'EVERYTHING', meaning: 'Todo', ex: [['She told me everything.','Me contó todo.'],['Everything is ready.','Todo está listo.']] },
+          { word: 'EVERYWHERE', meaning: 'En todos lados', ex: [['I looked everywhere.','Busqué en todos lados.']] },
+        ],
+        note: 'Everyone/Everybody/Everything = singular verb.'
+      }
+    ]
+  }
+];
+
+function indSetTab(i) {
+  indTab = i;
+  document.querySelectorAll('#ind-inner-nav .nav-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  renderInd();
+}
+
+function renderInd() {
+  const d = IND_DATA[indTab];
+  const app = document.getElementById('ind-app');
+  if (d.isDouble) {
+    app.innerHTML = d.sections.map(s=>`<div class="card" style="margin-bottom:12px;">
+      <div class="meaning-label" style="background:${s.color}20;color:${s.color};">${s.title}</div>
+      ${s.words.map(w=>`<div style="margin-bottom:10px;padding:10px 12px;background:rgba(255,255,255,0.5);border-radius:14px;">
+        <div style="font-weight:800;font-size:13.5px;color:var(--text-dark);">${w.word} <span style="font-weight:600;font-size:12px;color:${s.color};">(${w.meaning})</span></div>
+        <div class="examples" style="margin-top:6px;">${w.ex.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>
+      </div>`).join('')}
+      <div class="note-box" style="border-left-color:${s.color};">${s.note}</div>
+    </div>`).join('');
+    return;
+  }
+  app.innerHTML = `<div class="card">
+    <div class="meaning-label" style="background:${d.color}20;color:${d.color};">${d.title}</div>
+    ${d.words.map(w=>`<div style="margin-bottom:12px;padding:10px 12px;background:rgba(255,255,255,0.5);border-radius:14px;">
+      <div style="font-weight:800;font-size:13.5px;color:var(--text-dark);">${w.word} <span style="font-weight:600;font-size:12px;color:${d.color};">(${w.meaning})</span></div>
+      <div class="examples" style="margin-top:6px;">${w.ex.map(([en,es])=>`<div class="pair"><div class="en">${en}</div><div class="es">${es}</div></div>`).join('')}</div>
+    </div>`).join('')}
+    <div class="note-box" style="border-left-color:${d.color};">${d.note}</div>
+  </div>`;
+}
+
+/* ══════════ NEW EXERCISES ══════════ */
+const EX_BANK_NEW = [
+  // LET & ALLOW
+  {type:'mc',topic:'Let & Allow',text:'Choose the correct form: "My parents ___ me go to the party."',options:['let','allowed','let me to','allowed me'],correct:0},
+  {type:'mc',topic:'Let & Allow',text:'Choose the correct form: "She ___ him to use her car."',options:['let','allowed','lets to','allow'],correct:1},
+  {type:'mc',topic:'Let & Allow',text:'Which is correct?',options:['She let me to go.','She let me go.','She allowed me go.','She allowed to me go.'],correct:1},
+  {type:'tf',topic:'Let & Allow',text:'"Let" is more formal than "Allow".',correct:false},
+  {type:'tf',topic:'Let & Allow',text:'"Allow" is followed by TO + infinitive.',correct:true},
+  {type:'fill',topic:'Let & Allow',text:'Complete: "Students are not ___ to use phones in class." (allow — passive)',answer:'allowed'},
+
+  // VERBS OF PERCEPTION
+  {type:'mc',topic:'Verbs of Perception',text:'"I saw her ___ the street." (complete action)',options:['crossing','to cross','cross','crossed'],correct:2},
+  {type:'mc',topic:'Verbs of Perception',text:'"I saw her ___ the street." (action in progress)',options:['cross','to cross','crossed','crossing'],correct:3},
+  {type:'tf',topic:'Verbs of Perception',text:'Verbs of perception can be followed by either bare infinitive or -ing form.',correct:true},
+  {type:'mc',topic:'Verbs of Perception',text:'Which sentence means the action was complete?',options:['I heard him singing.','I heard him sing.','I was hearing him sing.','I hear him singing.'],correct:1},
+  {type:'fill',topic:'Verbs of Perception',text:'Complete: "I watched her ___ (dance — complete action)."',answer:'dance'},
+
+  // ACTION VS STATE
+  {type:'mc',topic:'Action vs State',text:'Which verb is typically a STATE verb?',options:['run','eat','know','write'],correct:2},
+  {type:'tf',topic:'Action vs State',text:'"I am knowing the answer." is correct English.',correct:false},
+  {type:'mc',topic:'Action vs State',text:'"I have a car" — here "have" is a ___ verb.',options:['action','state','auxiliary','modal'],correct:1},
+  {type:'mc',topic:'Action vs State',text:'"I\'m having lunch" — here "have" is a ___ verb.',options:['state','modal','action','auxiliary'],correct:2},
+  {type:'tf',topic:'Action vs State',text:'State verbs are generally used in continuous tenses.',correct:false},
+  {type:'fill',topic:'Action vs State',text:'Complete with simple or continuous: "She ___ (love) chocolate." (state verb)',answer:'loves'},
+
+  // PRESENT PERFECT
+  {type:'mc',topic:'Present Perfect',text:'Choose the correct sentence:',options:['I have went to Paris.','I have been to Paris.','I was go to Paris.','I went to Paris yesterday.'],correct:1},
+  {type:'mc',topic:'Present Perfect',text:'"I ___ been waiting for 2 hours." → Present Perfect Continuous',options:['have','has','had','am'],correct:0},
+  {type:'tf',topic:'Present Perfect',text:'"I have finished my homework" focuses on the result.',correct:true},
+  {type:'tf',topic:'Present Perfect',text:'"I have been finishing my homework" means the work is definitely complete.',correct:false},
+  {type:'mc',topic:'Present Perfect',text:'Which sentence uses the correct tense with "since"?',options:['I live here since 2010.','I have lived here since 2010.','I lived here since 2010.','I am living here since 2010.'],correct:1},
+  {type:'fill',topic:'Present Perfect',text:'Complete: "She has ___ arrived. (just)"',answer:'just arrived'},
+  {type:'mc',topic:'Present Perfect',text:'"Have you eaten ___?" → which word fits?',options:['already','just','yet','never'],correct:2},
+
+  // QUESTION TAGS
+  {type:'mc',topic:'Question Tags',text:'"You are coming, ___ ?"',options:['aren\'t you','isn\'t you','aren\'t I','are you'],correct:0},
+  {type:'mc',topic:'Question Tags',text:'"She can\'t drive, ___ ?"',options:['can\'t she','can she','doesn\'t she','isn\'t she'],correct:1},
+  {type:'tf',topic:'Question Tags',text:'A positive statement is followed by a positive tag.',correct:false},
+  {type:'mc',topic:'Question Tags',text:'"I\'m late, ___ ?"',options:['am I not','amn\'t I','aren\'t I','isn\'t I'],correct:2},
+  {type:'fill',topic:'Question Tags',text:'Complete: "Let\'s go, ___ we?" (tag for Let\'s)',answer:'shall'},
+
+  // REPLY QUESTIONS
+  {type:'mc',topic:'Reply Questions',text:'"I went to London last week." → Reply:',options:['Did I?','Did you?','Were you?','Have you?'],correct:1},
+  {type:'mc',topic:'Reply Questions',text:'"She can\'t come." → Reply:',options:['Can she?','Can\'t she?','Isn\'t she?','Won\'t she?'],correct:1},
+  {type:'tf',topic:'Reply Questions',text:'Reply questions always use the same auxiliary as the statement.',correct:true},
+
+  // SHORT ANSWERS
+  {type:'mc',topic:'Short Answers',text:'"Are you a student?" → Correct short answer:',options:['Yes, I\'m.','Yes, I am.','Yes, am I.','Yes, I do.'],correct:1},
+  {type:'mc',topic:'Short Answers',text:'"Can she swim?" → Negative short answer:',options:['No, she can\'t.','No, she can not.','No, she doesn\'t.','No, she isn\'t.'],correct:0},
+  {type:'tf',topic:'Short Answers',text:'"Yes, I\'m." is a correct short answer.',correct:false},
+
+  // SO TOO EITHER NEITHER
+  {type:'mc',topic:'So/Too/Either/Neither',text:'"I like pizza." → Agreement:',options:['"So do I."','"Neither do I."','"Either do I."','"So I do."'],correct:0},
+  {type:'mc',topic:'So/Too/Either/Neither',text:'"I don\'t like spiders." → Agreement:',options:['"So don\'t I."','"Neither do I."','"Too I don\'t."','"So do I."'],correct:1},
+  {type:'tf',topic:'So/Too/Either/Neither',text:'"Me too" is used to agree with negative statements.',correct:false},
+  {type:'mc',topic:'So/Too/Either/Neither',text:'Which is correct for agreement with "She can\'t come."?',options:['"So can\'t I."','"Neither can I."','"Either can I."','"Neither I can."'],correct:1},
+  {type:'fill',topic:'So/Too/Either/Neither',text:'Complete: "I am tired." — "___ am I." (agreement positive)',answer:'So'},
+
+  // INDEFINITE PRONOUNS
+  {type:'mc',topic:'Indefinite Pronouns',text:'Which pronoun is used in affirmative sentences?',options:['anybody','anything','someone','anyone'],correct:2},
+  {type:'mc',topic:'Indefinite Pronouns',text:'"___ called you." (alguien — afirmativo)',options:['Anyone','Nobody','Someone','Everywhere'],correct:2},
+  {type:'tf',topic:'Indefinite Pronouns',text:'"Nobody didn\'t come." is correct.',correct:false},
+  {type:'mc',topic:'Indefinite Pronouns',text:'"I didn\'t see ___ at the party." (nadie)',options:['somebody','everyone','nobody','anybody'],correct:3},
+  {type:'fill',topic:'Indefinite Pronouns',text:'Complete: "___ is ready." (Todo)',answer:'Everything'},
+  {type:'mc',topic:'Indefinite Pronouns',text:'"___ can make mistakes." (cualquiera)',options:['Nobody','Everywhere','Anyone','Nowhere'],correct:2},
+];
+
+function exNewShuffle(arr){ return [...arr].sort(()=>Math.random()-.5); }
+let exNewQs=[], exNewCur=0, exNewScore=0, exNewAnswered=false;
+
+function exNewStart(){
+  exNewQs = exNewShuffle(EX_BANK_NEW);
+  exNewCur=0; exNewScore=0; exNewAnswered=false;
+  exNewRenderQ();
+}
+
+function exNewRenderQ(){
+  exNewAnswered=false;
+  const q=exNewQs[exNewCur], app=document.getElementById('exnew-app');
+  const prog=`<div class="ex-progress"><span>${exNewCur+1} / ${exNewQs.length}</span><span>✓ ${exNewScore}</span></div>`;
+  const badge=`<div class="type-badge badge-mc"><span class="badge-dot"></span>${q.topic}</div>`;
+  if(q.type==='mc'){
+    app.innerHTML=prog+badge+`<div class="ex-question">${q.text}</div><div class="options">${q.options.map((o,i)=>`<button class="opt-btn" onclick="exNewAnswerMC(${i})">${o}</button>`).join('')}</div><div class="feedback" id="fb"></div>`;
+  } else if(q.type==='fill'){
+    app.innerHTML=prog+badge+`<div class="ex-question">${q.text}</div><input class="fill-input" id="fillIn" placeholder="Type your answer..." onkeydown="if(event.key==='Enter')exNewCheckFill()"><button class="check-btn" onclick="exNewCheckFill()">Check</button><div class="feedback" id="fb"></div>`;
+  } else {
+    app.innerHTML=prog+badge+`<div class="ex-question">${q.text}</div><div class="tf-btns"><button class="tf-btn" onclick="exNewAnswerTF(true)">✓ True</button><button class="tf-btn" onclick="exNewAnswerTF(false)">✗ False</button></div><div class="feedback" id="fb"></div>`;
+  }
+}
+
+function exNewShowFeedback(ok, msg){
+  exNewAnswered=true;
+  const fb=document.getElementById('fb');
+  fb.className='feedback '+(ok?'fb-ok':'fb-err');
+  fb.innerHTML=(ok?'✓ ':'✗ ')+msg;
+  fb.style.display='block';
+  ok?playGana():playPerder();
+  setTimeout(exNewNextQ, 1500);
+}
+function exNewAnswerMC(i){
+  if(exNewAnswered) return;
+  const q=exNewQs[exNewCur];
+  if(i===q.correct){exNewScore++;exNewShowFeedback(true,'Correct!');}
+  else exNewShowFeedback(false,'Wrong. Answer: '+q.options[q.correct]);
+}
+function exNewCheckFill(){
+  if(exNewAnswered) return;
+  const val=document.getElementById('fillIn').value.trim().toLowerCase();
+  const q=exNewQs[exNewCur];
+  const ok=val===q.answer.toLowerCase()||(q.answer.toLowerCase().includes(val)&&val.length>2);
+  if(ok){exNewScore++;exNewShowFeedback(true,'Correct!');}
+  else exNewShowFeedback(false,'Answer: '+q.answer);
+}
+function exNewAnswerTF(ans){
+  if(exNewAnswered) return;
+  const q=exNewQs[exNewCur];
+  if(ans===q.correct){exNewScore++;exNewShowFeedback(true,'Correct!');}
+  else exNewShowFeedback(false,'Wrong. It was '+(q.correct?'True':'False'));
+}
+function exNewNextQ(){
+  exNewAnswered=false; exNewCur++;
+  if(exNewCur>=exNewQs.length){exNewShowResults();return;}
+  exNewRenderQ();
+}
+function exNewShowResults(){
+  const total=exNewQs.length,pct=Math.round((exNewScore/total)*100);
+  const stars=pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':'⭐';
+  const msg=pct>=90?'Excellent!':pct>=70?'Well done!':'Keep practising!';
+  document.getElementById('exnew-app').innerHTML=`<div class="card results"><div class="results-stars">${stars}</div><div class="results-score">${pct}%</div><div class="results-label">${msg}</div><div class="results-sub">${exNewScore} of ${total} correct</div><div class="breakdown"><div class="pill pill-c">✓ ${exNewScore} correct</div><div class="pill pill-w">✗ ${total-exNewScore} wrong</div></div><button class="retry-btn" onclick="exNewStart()">↺ Try again</button></div>`;
+}
+
 
 /* INIT */
 senRender();
