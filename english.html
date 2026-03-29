@@ -980,6 +980,11 @@ const VERBS=[
   {b:'throw',p:'threw',pp:'thrown',t:'lanzar',g:'A-B'},{b:'understand',p:'understood',pp:'understood',t:'entender',g:'B-B'},{b:'wake',p:'woke',pp:'woken',t:'despertar',g:'A-B'},
   {b:'wear',p:'wore',pp:'worn',t:'llevar puesto',g:'A-B'},{b:'win',p:'won',pp:'won',t:'ganar',g:'B-B'},{b:'write',p:'wrote',pp:'written',t:'escribir',g:'A-B'},
 ];
+
+/* IV state variables */
+let ivMode='flash', ivFlashList=[], ivFlashIdx=0, ivFlashFlipped=false;
+let ivFlashGroup='all', ivFlashSeen=new Set();
+
 const IV_GROUP_LABELS={'A-A':'Igual en las 3 formas','A-B':'Las 3 formas distintas','B-B':'Past = Past Participle'};
 function ivShuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
 function ivNorm(s){return s.toLowerCase().replace(/[^a-z\/\s]/g,'').replace(/\s+/g,' ').trim();}

@@ -389,6 +389,12 @@ body::after {width:300px;height:300px;bottom:-70px;left:-70px;background:radial-
 
 <script>
 
+/* postMessage listener */
+window.addEventListener('message', function(e){
+  if(e.data && e.data.action==='showPage') showPage(e.data.page);
+});
+
+
 /* Hide topbar and menu when inside iframe */
 if (window.self !== window.top) {
   document.addEventListener('DOMContentLoaded', function() {
